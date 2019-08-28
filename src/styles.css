@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+.footer-button {
+  left: 90%;
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  margin-bottom: 10px;
+  transform: translate(-100%);
+}
