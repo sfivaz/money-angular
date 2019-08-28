@@ -1,0 +1,18 @@
+<div *ngIf="visible" class="my-modal">
+  <div class="d-flex align-items-center">
+    <h2 class="f-1">{{title}}</h2>
+    <button id="btn-close-modal" class="btn btn-outline-dark">X</button>
+  </div>
+  <form>
+    <input id="account-id" type="hidden" value="">
+    <input id="account-balance" type="hidden" value="">
+    <div class="form-group">
+      <label>name</label>
+      <input id="account-name" class="form-control" placeholder="name" value=""
+             required autofocus>
+    </div>
+    <div>
+      <button id="btn-submit" type="submit" class="btn-lg btn-block btn-success d-block m-auto">{{title}}</button>
+    </div>
+  </form>
+</div>

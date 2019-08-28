@@ -27,11 +27,12 @@
     <h2>Accounts</h2>
     <h2>{{homepage.total}}</h2>
   </div>
+
+  <m-form #test></m-form>
+  <section id="confirm-modal"></section>
+
 </main>
 
 <footer>
-  <button id="btn-create-child" class="footer-button btn btn-success">New account</button>
+  <button id="btn-create-child" class="footer-button btn btn-success" (click)="openForm()">New account</button>
 </footer>
-
-<section id="form"></section>
-<section id="confirm-modal"></section>
