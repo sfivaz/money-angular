@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'm-form',
-  templateUrl: './form.component.html'
+  selector: 'm-account-form',
+  templateUrl: './account-form.component.html'
 })
-export class FormComponent implements OnInit {
+export class AccountFormComponent implements OnInit {
 
   title: string = 'create account';
   visible: boolean = false;

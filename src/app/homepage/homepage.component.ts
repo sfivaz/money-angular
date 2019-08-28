@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Homepage} from "./homepage";
-import {FormComponent} from "../form/form.component";
+import {AccountFormComponent} from "../account-form/account-form.component";
 
 @Component({
   selector: 'm-homepage',
@@ -10,7 +10,7 @@ export class HomepageComponent implements OnInit {
 
   homepage: Homepage;
 
-  @ViewChild('test', {static: false}) form;
+  @ViewChild(AccountFormComponent, {static: false}) form: AccountFormComponent;
 
   constructor() {
   }

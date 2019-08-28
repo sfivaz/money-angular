@@ -1,7 +1,7 @@
 <div *ngIf="visible" class="my-modal">
   <div class="d-flex align-items-center">
     <h2 class="f-1">{{title}}</h2>
-    <button id="btn-close-modal" class="btn btn-outline-dark">X</button>
+    <button id="btn-close-modal" class="btn btn-outline-dark" (click)="close()">X</button>
   </div>
   <form>
     <input id="account-id" type="hidden" value="">
