@@ -3,8 +3,7 @@ import {Account} from "../account";
 
 @Component({
   selector: 'm-account-row',
-  templateUrl: './account-row.component.html',
-  styles: [`.clr-account { background-color: #28a745;}`]
+  templateUrl: './account-row.component.html'
 })
 export class AccountRowComponent implements OnInit {
 
