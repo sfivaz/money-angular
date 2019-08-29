@@ -20,8 +20,9 @@ export class CategoryService {
     return this.http.get<Category>(API + '/' + id);
   }
 
-  create(Category: Category) {
-    return this.http.post<Category>(API, Category);
+  create(category: Category) {
+    console.log(JSON.stringify(category));
+    return this.http.post<Category>(API, category);
   }
 
   edit(category: Category) {

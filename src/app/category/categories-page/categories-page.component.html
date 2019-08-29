@@ -4,4 +4,10 @@
   <m-category-row [category]="category" *ngFor="let category of categories"></m-category-row>
 </main>
 
+<m-category-form (onCreate)="addCategory($event)"></m-category-form>
 
+<m-confirm-delete element="account" (onConfirm)="removeCategory($event)"></m-confirm-delete>
+
+<footer>
+  <button class="footer-button btn btn-success" (click)="openForm()">New category</button>
+</footer>
