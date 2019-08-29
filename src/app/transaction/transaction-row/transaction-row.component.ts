@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Transaction} from "../transaction";
 
 @Component({
   selector: 'm-transaction-row',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionRowComponent implements OnInit {
 
-  constructor() { }
+  @Input() transaction: Transaction;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
