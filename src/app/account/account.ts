@@ -44,4 +44,11 @@ export class Account {
   set balance(value) {
     this._balance = Number(value);
   }
+
+  toJSON() {
+    return {
+      id: this.id,
+      name: this.name
+    };
+  }
 }

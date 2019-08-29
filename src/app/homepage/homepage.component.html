@@ -32,7 +32,7 @@
     <m-account [account]="account" *ngFor="let account of homepage.accounts"></m-account>
   </ul>
 
-  <m-account-form></m-account-form>
+  <m-account-form (onCreate)="addAccount($event)"></m-account-form>
   <section id="confirm-modal"></section>
 
 </main>

@@ -13,6 +13,10 @@ export class AccountService {
   }
 
   findAll() {
-    return this.http.get<Account>(API);
+    return this.http.get<Account[]>(API);
+  }
+
+  create(account: Account) {
+    return this.http.post<Account>(API, account);
   }
 }

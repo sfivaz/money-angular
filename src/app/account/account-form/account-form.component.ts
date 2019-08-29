@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Account} from "../account";
+import {AccountService} from "../../services/account.service";
 
 @Component({
   selector: 'm-account-form',
@@ -10,8 +12,9 @@ export class AccountFormComponent implements OnInit {
   title: string = 'create account';
   visible: boolean = false;
   accountForm: FormGroup;
+  @Output() onCreate = new EventEmitter();
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private accountService: AccountService) {
   }
 
   ngOnInit() {
@@ -26,5 +29,19 @@ export class AccountFormComponent implements OnInit {
 
   close() {
     this.visible = false;
+  }
+
+  buildAccount() {
+    const name = this.accountForm.get('name').value;
+    return new Account(null, name, null, null);
+  }
+
+  submit() {
+    const account = this.buildAccount();
+    this.accountService.create(account)
+      .subscribe(account => {
+        this.onCreate.emit(account);
+        this.visible = false;
+      });
   }
 }
