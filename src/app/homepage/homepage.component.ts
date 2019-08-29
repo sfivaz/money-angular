@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Homepage} from "./homepage";
-import {AccountFormComponent} from "../account-form/account-form.component";
+import {AccountFormComponent} from "../account/account-form/account-form.component";
 import {AccountService} from "../services/account.service";
 
 @Component({
@@ -9,7 +9,7 @@ import {AccountService} from "../services/account.service";
 })
 export class HomepageComponent implements OnInit {
 
-  homepage: Homepage;
+  homepage: Homepage = new Homepage();
 
   @ViewChild(AccountFormComponent, {static: false}) form: AccountFormComponent;
 
@@ -17,8 +17,10 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.homepage = new Homepage();
-    this.service.findAll().subscribe(accounts => console.log(accounts), console.log);
+    this.service.findAll().subscribe(accounts => {
+      this.homepage.accounts = this.homepage.accounts.concat(accounts);
+      console.log(this.homepage.accounts);
+    }, console.log);
   }
 
   openForm() {

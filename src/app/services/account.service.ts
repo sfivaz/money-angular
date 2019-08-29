@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Account} from "../account/account";
 
 const API = 'http://localhost:3000/accounts';
 
@@ -12,6 +13,6 @@ export class AccountService {
   }
 
   findAll() {
-    return this.http.get(API);
+    return this.http.get<Account>(API);
   }
 }
