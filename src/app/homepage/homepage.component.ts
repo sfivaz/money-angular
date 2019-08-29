@@ -39,8 +39,7 @@ export class HomepageComponent implements OnInit {
   }
 
   removeAccount(accountId: number) {
-    this.homepage.removeAccountById(accountId);
-    // const index = this.homepage.accounts.findIndex(account => account.id === accountId);
-    // this.homepage.accounts.splice(index, 1);
+    this.service.delete(accountId).subscribe(() =>
+      this.homepage.removeAccountById(accountId));
   }
 }

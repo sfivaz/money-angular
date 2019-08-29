@@ -19,4 +19,8 @@ export class AccountService {
   create(account: Account) {
     return this.http.post<Account>(API, account);
   }
+
+  delete(id: number) {
+    return this.http.delete(API + '/' + id);
+  }
 }
