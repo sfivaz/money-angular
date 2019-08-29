@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Account} from "../account";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'm-account-row',
@@ -11,7 +12,7 @@ export class AccountRowComponent implements OnInit {
   @Output() onDelete = new EventEmitter();
   @Output() onEdit = new EventEmitter();
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
@@ -23,5 +24,9 @@ export class AccountRowComponent implements OnInit {
 
   edit() {
     this.onEdit.emit(this.account);
+  }
+
+  enter() {
+    this.router.navigateByUrl('account/' + this.account.id);
   }
 }
