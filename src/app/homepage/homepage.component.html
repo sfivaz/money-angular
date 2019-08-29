@@ -30,7 +30,8 @@
 
   <ul>
     <m-account [account]="account" *ngFor="let account of homepage.accounts"
-               (onDelete)="openConfirm($event)">
+               (onDelete)="openConfirm($event)"
+               (onEdit)="openForm($event)">
     </m-account>
   </ul>
 

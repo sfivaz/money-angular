@@ -10,6 +10,7 @@ export class AccountComponent implements OnInit {
 
   @Input() account: Account;
   @Output() onDelete = new EventEmitter();
+  @Output() onEdit = new EventEmitter();
 
   constructor() {
   }
@@ -19,5 +20,9 @@ export class AccountComponent implements OnInit {
 
   delete() {
     this.onDelete.emit(this.account.id);
+  }
+
+  edit() {
+    this.onEdit.emit(this.account);
   }
 }

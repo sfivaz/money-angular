@@ -20,6 +20,10 @@ export class AccountService {
     return this.http.post<Account>(API, account);
   }
 
+  edit(account: Account) {
+    return this.http.put<Account>(API + '/' + account.id, account);
+  }
+
   delete(id: number) {
     return this.http.delete(API + '/' + id);
   }

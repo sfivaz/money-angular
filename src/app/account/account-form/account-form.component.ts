@@ -9,39 +9,70 @@ import {AccountService} from "../../services/account.service";
 })
 export class AccountFormComponent implements OnInit {
 
-  title: string = 'create account';
   visible: boolean = false;
   accountForm: FormGroup;
   @Output() onCreate = new EventEmitter();
+  @Output() onEdit = new EventEmitter();
+  account: Account = new Account(null, null, null, null);
 
   constructor(private formBuilder: FormBuilder, private accountService: AccountService) {
   }
 
   ngOnInit() {
-    this.accountForm = this.formBuilder.group({
-      name: ['', Validators.required]
-    });
   }
 
-  open() {
+  open(account?: Account) {
     this.visible = true;
+    if (account)
+      this.account = account;
+
+    this.buildForm();
   }
 
   close() {
     this.visible = false;
+    this.account = new Account(null, null, null, null);
   }
 
-  buildAccount() {
-    const name = this.accountForm.get('name').value;
-    return new Account(null, name, null, null);
+  updateAccount() {
+    const id = this.accountForm.get('id').value;
+    if (id)
+      this.account.id = id;
+    this.account.name = this.accountForm.get('name').value;
   }
 
   submit() {
-    const account = this.buildAccount();
-    this.accountService.create(account)
+    this.updateAccount();
+    if (this.account.id)
+      this.edit();
+    else
+      this.create();
+  }
+
+  create() {
+    this.accountService.create(this.account)
       .subscribe(account => {
         this.onCreate.emit(account);
-        this.visible = false;
+        this.close();
       });
+  }
+
+  edit() {
+    this.accountService.edit(this.account)
+      .subscribe(account => {
+        this.onEdit.emit(account);
+        this.close();
+      });
+  }
+
+  buildForm() {
+    this.accountForm = this.formBuilder.group({
+      id: [this.account.id || ''],
+      name: [this.account.name || '', Validators.required]
+    });
+  }
+
+  getTitle(): string {
+    return `${this.account.id ? 'edit' : 'create'} account`;
   }
 }

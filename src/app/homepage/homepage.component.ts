@@ -26,8 +26,8 @@ export class HomepageComponent implements OnInit {
     }, console.log);
   }
 
-  openForm() {
-    this.form.open();
+  openForm(account?: Account) {
+    this.form.open(account);
   }
 
   openConfirm(id: number) {

@@ -1,6 +1,6 @@
 <div *ngIf="visible" class="my-modal">
   <div class="d-flex align-items-center">
-    <h2 class="f-1">{{title}}</h2>
+    <h2 class="f-1">{{getTitle()}}</h2>
     <button id="btn-close-modal" class="btn btn-outline-dark" (click)="close()">X</button>
   </div>
   <form [formGroup]="accountForm" (submit)="submit()">
@@ -14,7 +14,7 @@
     </div>
     <div>
       <button [disabled]="accountForm.invalid" type="submit" class="btn-lg btn-block btn-success d-block m-auto">
-        {{title}}
+        {{getTitle()}}
       </button>
     </div>
   </form>
