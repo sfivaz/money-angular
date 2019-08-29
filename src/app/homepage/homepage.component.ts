@@ -6,7 +6,6 @@ import {Account} from "../account/account";
 import {ConfirmDeleteComponent} from "../shared/confirm-delete/confirm-delete.component";
 
 @Component({
-  selector: 'm-homepage',
   templateUrl: './homepage.component.html'
 })
 export class HomepageComponent implements OnInit {
