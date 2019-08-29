@@ -1,0 +1,55 @@
+.transaction-grid {
+  display: grid;
+  grid-template-areas: "date desc cate value edit del";
+  grid-template-columns: 15% 1fr 20% 10% auto auto;
+  align-items: center;
+  grid-gap: .5rem;
+}
+
+.grid-date {
+  grid-area: date;
+}
+
+.grid-description {
+  grid-area: desc;
+}
+
+.grid-category {
+  grid-area: cate;
+}
+
+.grid-value {
+  grid-area: value;
+}
+
+.grid-btn-edit {
+  grid-area: edit;
+}
+
+.grid-btn-delete {
+  grid-area: del;
+}
+
+.clr-transfer-source {
+  background-color: #e5515f;
+}
+
+.clr-transfer-destiny {
+  background-color: #42c47e;
+}
+
+.clr-spending {
+  background-color: #db4828;
+}
+
+.clr-income {
+  background-color: #2ca765;
+}
+
+@media (max-width: 768px) {
+  .transaction-grid {
+    grid-template-areas: "desc desc desc edit" "date cate value del";
+    grid-template-columns: 1fr 1fr 1fr auto;
+    grid-template-rows: auto auto;
+  }
+}
