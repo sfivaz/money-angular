@@ -2,7 +2,6 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {Account} from "../account";
 import {ActivatedRoute} from "@angular/router";
 import {TransactionService} from "../../services/transaction.service";
-import {Category} from "../../category/category";
 import {ConfirmDeleteComponent} from "../../shared/confirm-delete/confirm-delete.component";
 import {Transaction} from "../../transaction/transaction";
 import {TransactionFormComponent} from "../../transaction/transaction-form/transaction-form.component";
@@ -18,12 +17,12 @@ export class AccountPageComponent implements OnInit {
   @ViewChild(TransactionFormComponent, {static: false}) form: TransactionFormComponent;
   @ViewChild(ConfirmDeleteComponent, {static: false}) confirm: ConfirmDeleteComponent;
 
-
   constructor(private activatedRoute: ActivatedRoute, private service: TransactionService) {
   }
 
   ngOnInit() {
-    this.account = this.activatedRoute.snapshot.data.account;
+    const accountObj = this.activatedRoute.snapshot.data.account;
+    this.account = new Account(accountObj.id, accountObj.name, accountObj.transactions, accountObj.balance);
   }
 
   openForm(transaction?: Transaction) {
@@ -37,7 +36,6 @@ export class AccountPageComponent implements OnInit {
   addTransaction(transaction: Transaction) {
     this.account.transactions.push(transaction);
   }
-
 
   removeTransaction(transactionId: number) {
     this.service.delete(transactionId).subscribe(() =>

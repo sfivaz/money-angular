@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Transaction} from "../transaction";
 
 @Component({
@@ -9,11 +9,21 @@ import {Transaction} from "../transaction";
 export class TransactionRowComponent implements OnInit {
 
   @Input() transaction: Transaction;
+  @Output() onDelete = new EventEmitter();
+  @Output() onEdit = new EventEmitter();
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  delete() {
+    this.onDelete.emit(this.transaction.id);
+  }
+
+  edit() {
+    this.onEdit.emit(this.transaction);
   }
 
 }

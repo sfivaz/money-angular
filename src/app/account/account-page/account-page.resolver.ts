@@ -11,7 +11,8 @@ export class AccountPageResolver implements Resolve<Observable<Account>> {
   constructor(private service: AccountService) {
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
+    Observable<Observable<Account>> | Promise<Observable<Account>> | Observable<Account> {
     const id = route.params.id;
     return this.service.find(id);
   }

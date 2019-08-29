@@ -29,7 +29,10 @@
     <h3 id="filtered-balance"></h3>
   </div>
 
-  <m-transaction-row [transaction]="transaction" *ngFor="let transaction of account.transactions"></m-transaction-row>
+  <m-transaction-row [transaction]="transaction" *ngFor="let transaction of account.transactions"
+                     (onDelete)="openConfirm($event)"
+                     (onEdit)="openForm($event)">
+  </m-transaction-row>
 </main>
 
 <m-transaction-form (onCreate)="addTransaction($event)"></m-transaction-form>
