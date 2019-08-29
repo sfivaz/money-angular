@@ -1,7 +1,9 @@
 <m-navbar></m-navbar>
 
 <main class="container">
-  <m-category-row [category]="category" *ngFor="let category of categories"></m-category-row>
+  <m-category-row [category]="category" *ngFor="let category of categories" (onDelete)="openConfirm($event)"
+                  (onEdit)="openForm($event)">
+  </m-category-row>
 </main>
 
 <m-category-form (onCreate)="addCategory($event)"></m-category-form>

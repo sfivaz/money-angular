@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Category} from "../category";
 
 @Component({
@@ -8,10 +8,20 @@ import {Category} from "../category";
 export class CategoryRowComponent implements OnInit {
 
   @Input() category: Category;
+  @Output() onDelete = new EventEmitter();
+  @Output() onEdit = new EventEmitter();
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  delete() {
+    this.onDelete.emit(this.category.id);
+  }
+
+  edit() {
+    this.onEdit.emit(this.category);
   }
 }

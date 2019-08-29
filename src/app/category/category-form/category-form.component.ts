@@ -1,8 +1,7 @@
-import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CategoryService} from "../../services/category.service";
 import {Category} from "../category";
-import {bindCallback} from "rxjs";
 
 @Component({
   selector: 'm-category-form',
