@@ -1,3 +1,40 @@
 <m-navbar></m-navbar>
 
-<h1>{{account.name}}</h1>
+<main class="container">
+  <div class="d-flex justify-content-between">
+    <h2>{{account.name}}</h2>
+    <h2 id="account-full-balance"></h2>
+  </div>
+
+  <div class="filter-bar pb-2">
+    <div class="filter-date d-flex">
+      <!--        //TODO add min and max value based on the transactions's date in the account-->
+      <label for="iptDateFilter" class="filter__label">Choose a month</label>
+      <input type="month" id="iptDateFilter" class="filter__input form-control form-control-sm">
+    </div>
+
+    <div class="filter-type d-flex">
+      <label for="slcTypeFilter" class="filter__label">Choose a type</label>
+      <select id="slcTypeFilter" class="filter__select custom-select custom-select-sm"></select>
+    </div>
+
+    <div class="filter-category d-flex">
+      <label for="slcCategoryFilter" class="filter__label">Choose a category</label>
+      <select id="slcCategoryFilter" class="filter__select custom-select custom-select-sm"></select>
+      <label for="cbxBudget">use Budget</label>
+      <input type="checkbox" id="cbxBudget" disabled>
+    </div>
+
+    <button id="btn-clean-filter" class="btn-clean-filter btn btn-sm btn-secondary">clean filters</button>
+    <h3 id="filtered-balance"></h3>
+  </div>
+
+  <div id="list"></div>
+
+  <footer>
+    <button id="btn-create-child" class="footer-button btn btn-success">New transaction</button>
+  </footer>
+
+  <section id="form"></section>
+  <section id="confirm-modal"></section>
+</main>

@@ -1,7 +1,3 @@
-.clr-account {
-  background-color: #28a745;
-}
-
 .filter-bar {
   display: grid;
   grid-template-areas: "filter-date filter-type filter-category btn-clean-filter filtered-balance";

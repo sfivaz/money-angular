@@ -3,7 +3,8 @@ import {Account} from "../account";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
-  templateUrl: './account-page.component.html'
+  templateUrl: './account-page.component.html',
+  styleUrls: ['./account-page.component.css']
 })
 export class AccountPageComponent implements OnInit {
 

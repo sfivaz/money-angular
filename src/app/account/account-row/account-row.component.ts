@@ -4,7 +4,7 @@ import {Account} from "../account";
 @Component({
   selector: 'm-account-row',
   templateUrl: './account-row.component.html',
-  styleUrls: ['./account-row.component.css']
+  styles: [`.clr-account { background-color: #28a745;}`]
 })
 export class AccountRowComponent implements OnInit {
 
