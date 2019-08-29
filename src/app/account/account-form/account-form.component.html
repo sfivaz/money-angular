@@ -3,16 +3,19 @@
     <h2 class="f-1">{{title}}</h2>
     <button id="btn-close-modal" class="btn btn-outline-dark" (click)="close()">X</button>
   </div>
-  <form>
+  <form [formGroup]="accountForm">
     <input id="account-id" type="hidden" value="">
-    <input id="account-balance" type="hidden" value="">
     <div class="form-group">
       <label>name</label>
-      <input id="account-name" class="form-control" placeholder="name" value=""
-             required autofocus>
+      <input formControlName="name" class="form-control" placeholder="name" value="" autofocus>
+      <small *ngIf="accountForm.get('name').errors?.required" class="text-danger d-block mt-2">
+        account name is required!
+      </small>
     </div>
     <div>
-      <button id="btn-submit" type="submit" class="btn-lg btn-block btn-success d-block m-auto">{{title}}</button>
+      <button [disabled]="accountForm.invalid" type="submit" class="btn-lg btn-block btn-success d-block m-auto">
+        {{title}}
+      </button>
     </div>
   </form>
 </div>
