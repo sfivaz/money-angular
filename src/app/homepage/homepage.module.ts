@@ -3,13 +3,15 @@ import {CommonModule} from '@angular/common';
 import {HomepageComponent} from "./homepage.component";
 import {AccountModule} from "../account/account/account.module";
 import {AccountFormModule} from "../account/account-form/account-form.module";
+import {ConfirmDeleteModule} from "../shared/confirm-delete/confirm-delete.module";
 
 @NgModule({
   declarations: [HomepageComponent],
   imports: [
     CommonModule,
     AccountModule,
-    AccountFormModule
+    AccountFormModule,
+    ConfirmDeleteModule
   ],
   exports: [HomepageComponent]
 })

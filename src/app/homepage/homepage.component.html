@@ -29,11 +29,14 @@
   </div>
 
   <ul>
-    <m-account [account]="account" *ngFor="let account of homepage.accounts"></m-account>
+    <m-account [account]="account" *ngFor="let account of homepage.accounts"
+               (onDelete)="openConfirm($event)">
+    </m-account>
   </ul>
 
   <m-account-form (onCreate)="addAccount($event)"></m-account-form>
-  <section id="confirm-modal"></section>
+
+  <m-confirm-delete element="account" (onConfirm)="removeAccount($event)"></m-confirm-delete>
 
 </main>
 
