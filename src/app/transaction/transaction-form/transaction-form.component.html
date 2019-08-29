@@ -1,0 +1,64 @@
+<div *ngIf="visible" class="my-modal">
+  <div class="d-flex align-items-start">
+    <h2 class="f-1">{{getTitle()}}</h2>
+    <button class="btn btn-outline-dark" (click)="close()">X</button>
+  </div>
+  <form [formGroup]="transactionForm" (submit)="submit()">
+    <input type="hidden">
+    <div class="form-group">
+      <div>
+        <label>description</label>
+        <input formControlName="description" class="form-control" placeholder="description">
+      </div>
+    </div>
+    <div class="form-row ">
+      <div class="col">
+        <label>type</label>
+        <select formControlName="type" class="form-control">
+          <option *ngFor="let type of types" value="type">{{type}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <label>value</label>
+        <input formControlName="value" class="form-control">
+        <small *ngIf="transactionForm.get('value').errors?.required" class="text-danger d-block mt-2">
+          transaction value is required!
+        </small>
+      </div>
+    </div>
+    <div class="form-row form-group">
+      <div class="col">
+        <label>category</label>
+        <select formControlName="categoryId" class="form-control">
+          <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <label>date</label>
+        <input formControlName="date" class="form-control" type="date">
+        <small *ngIf="transactionForm.get('date').errors?.required" class="text-danger d-block mt-2">
+          transaction date is required!
+        </small>
+      </div>
+    </div>
+    <div class="form-row form-group">
+      <div class="col">
+        <label>source account</label>
+        <select formControlName="sourceAccountId" class="form-control">
+          <option *ngFor="let account of accounts" value="{{account.id}}">{{account.name}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <label>destination account</label>
+        <select id="transaction-destination-id" name="destination" class="form-control">
+          <option *ngFor="let account of accounts" value="{{account.id}}">{{account.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row form-group">
+      <button [disabled]="transactionForm.invalid" type="submit" class="btn-lg btn-block btn-success d-block m-auto">
+        {{getTitle()}}
+      </button>
+    </div>
+  </form>
+</div>
