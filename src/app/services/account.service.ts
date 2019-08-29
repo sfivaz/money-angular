@@ -16,6 +16,10 @@ export class AccountService {
     return this.http.get<Account[]>(API);
   }
 
+  find(id: number) {
+    return this.http.get<Account>(API + '/' + id);
+  }
+
   create(account: Account) {
     return this.http.post<Account>(API, account);
   }
