@@ -1,14 +1,15 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HomepageComponent} from "./homepage.component";
-import {AccountFormComponent} from "../account/account-form/account-form.component";
 import {AccountModule} from "../account/account/account.module";
+import {AccountFormModule} from "../account/account-form/account-form.module";
 
 @NgModule({
-  declarations: [HomepageComponent, AccountFormComponent],
+  declarations: [HomepageComponent],
   imports: [
     CommonModule,
-    AccountModule
+    AccountModule,
+    AccountFormModule
   ],
   exports: [HomepageComponent]
 })
