@@ -4,6 +4,7 @@ import {HomepageComponent} from "./homepage.component";
 import {AccountRowModule} from "../account/account-row/account-row.module";
 import {AccountFormModule} from "../account/account-form/account-form.module";
 import {ConfirmDeleteModule} from "../shared/confirm-delete/confirm-delete.module";
+import {NavbarModule} from "../shared/navbar/navbar.module";
 
 @NgModule({
   declarations: [HomepageComponent],
@@ -11,7 +12,8 @@ import {ConfirmDeleteModule} from "../shared/confirm-delete/confirm-delete.modul
     CommonModule,
     AccountRowModule,
     AccountFormModule,
-    ConfirmDeleteModule
+    ConfirmDeleteModule,
+    NavbarModule
   ],
   exports: [HomepageComponent]
 })
