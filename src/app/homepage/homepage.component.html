@@ -29,7 +29,7 @@
   </div>
 
   <ul>
-    <li *ngFor="let account of homepage.accounts">{{account.name}}</li>
+    <m-account [account]="account" *ngFor="let account of homepage.accounts"></m-account>
   </ul>
 
   <m-account-form></m-account-form>
