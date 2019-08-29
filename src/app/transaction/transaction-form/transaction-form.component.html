@@ -15,7 +15,7 @@
       <div class="col">
         <label>type</label>
         <select formControlName="type" class="form-control">
-          <option *ngFor="let type of types" value="type">{{type}}</option>
+          <option *ngFor="let type of types" [value]="type">{{type}}</option>
         </select>
       </div>
       <div class="col">
@@ -30,7 +30,7 @@
       <div class="col">
         <label>category</label>
         <select formControlName="categoryId" class="form-control">
-          <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
+          <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
         </select>
       </div>
       <div class="col">
@@ -45,13 +45,13 @@
       <div class="col">
         <label>source account</label>
         <select formControlName="sourceAccountId" class="form-control">
-          <option *ngFor="let account of accounts" value="{{account.id}}">{{account.name}}</option>
+          <option *ngFor="let account of accounts" [value]="account.id">{{account.name}}</option>
         </select>
       </div>
       <div class="col">
         <label>destination account</label>
-        <select id="transaction-destination-id" name="destination" class="form-control">
-          <option *ngFor="let account of accounts" value="{{account.id}}">{{account.name}}</option>
+        <select formControlName="destinationAccountId" name="destination" class="form-control">
+          <option *ngFor="let account of accounts" [value]="account.id">{{account.name}}</option>
         </select>
       </div>
     </div>

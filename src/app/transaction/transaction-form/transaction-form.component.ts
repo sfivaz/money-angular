@@ -52,6 +52,19 @@ export class TransactionFormComponent implements OnInit {
     this.buildForm();
   }
 
+  buildForm() {
+    this.transactionForm = this.formBuilder.group({
+      id: [this.transaction.id || null],
+      description: [this.transaction.description || ''],
+      value: [this.transaction.value || ''],
+      date: [this.transaction.date || ''],
+      type: [this.transaction.type],
+      categoryId: [this.transaction.categoryId || null],
+      sourceAccountId: [this.transaction.sourceAccountId || null],
+      destinationAccountId: [this.transaction.destinationAccountId || null]
+    });
+  }
+
   close() {
     this.visible = false;
     this.transaction = new Transaction(
@@ -99,19 +112,6 @@ export class TransactionFormComponent implements OnInit {
         this.onEdit.emit(transaction);
         this.close();
       });
-  }
-
-  buildForm() {
-    this.transactionForm = this.formBuilder.group({
-      id: [this.transaction.id || ''],
-      description: [this.transaction.description || ''],
-      value: [this.transaction.value || '', Validators.required],
-      date: [this.transaction.date || new Date(), Validators.required],
-      type: [this.transaction.type || '', Validators.required],
-      categoryId: [this.transaction.categoryId || '', Validators.required],
-      sourceAccountId: [this.transaction.sourceAccountId || '', Validators.required],
-      destinationAccountId: [this.transaction.destinationAccountId || '']
-    });
   }
 
   getTitle(): string {
