@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HomepageComponent} from "./homepage.component";
-import {AccountModule} from "../account/account/account.module";
+import {AccountRowModule} from "../account/account-row/account-row.module";
 import {AccountFormModule} from "../account/account-form/account-form.module";
 import {ConfirmDeleteModule} from "../shared/confirm-delete/confirm-delete.module";
 
@@ -9,7 +9,7 @@ import {ConfirmDeleteModule} from "../shared/confirm-delete/confirm-delete.modul
   declarations: [HomepageComponent],
   imports: [
     CommonModule,
-    AccountModule,
+    AccountRowModule,
     AccountFormModule,
     ConfirmDeleteModule
   ],

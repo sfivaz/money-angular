@@ -2,11 +2,11 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Account} from "../account";
 
 @Component({
-  selector: 'm-account',
-  templateUrl: './account.component.html',
-  styleUrls: ['./account.component.css']
+  selector: 'm-account-row',
+  templateUrl: './account-row.component.html',
+  styleUrls: ['./account-row.component.css']
 })
-export class AccountComponent implements OnInit {
+export class AccountRowComponent implements OnInit {
 
   @Input() account: Account;
   @Output() onDelete = new EventEmitter();

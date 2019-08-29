@@ -29,10 +29,10 @@
   </div>
 
   <ul>
-    <m-account [account]="account" *ngFor="let account of homepage.accounts"
+    <m-account-row [account]="account" *ngFor="let account of homepage.accounts"
                (onDelete)="openConfirm($event)"
                (onEdit)="openForm($event)">
-    </m-account>
+    </m-account-row>
   </ul>
 
   <m-account-form (onCreate)="addAccount($event)"></m-account-form>
