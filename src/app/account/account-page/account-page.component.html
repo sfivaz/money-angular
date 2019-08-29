@@ -30,11 +30,12 @@
   </div>
 
   <m-transaction-row [transaction]="transaction" *ngFor="let transaction of account.transactions"></m-transaction-row>
-
-  <footer>
-    <button id="btn-create-child" class="footer-button btn btn-success">New transaction</button>
-  </footer>
-
-  <section id="form"></section>
-  <section id="confirm-modal"></section>
 </main>
+
+<m-transaction-form (onCreate)="addTransaction($event)"></m-transaction-form>
+
+<m-confirm-delete element="transaction" (onConfirm)="removeTransaction($event)"></m-confirm-delete>
+
+<footer>
+  <button class="footer-button btn btn-success" (click)="openForm()">New transaction</button>
+</footer>

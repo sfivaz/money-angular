@@ -1,12 +1,12 @@
 export class Transaction {
-  private _id;
-  private _description;
-  private _type;
-  private _value;
-  private _categoryId;
-  private _date;
-  private _sourceAccountId;
-  private _destinationAccountId;
+  private _id: number;
+  private _description: string;
+  private _type: string;
+  private _value: number;
+  private _categoryId: number;
+  private _date: Date;
+  private _sourceAccountId: number;
+  private _destinationAccountId: number;
 
   constructor(id, description, type, value, categoryId, date, sourceAccountId, destinationAccountId) {
     this._id = id;
@@ -19,67 +19,67 @@ export class Transaction {
     this._destinationAccountId = destinationAccountId;
   }
 
-  get id() {
+  get id(): number {
     return this._id;
   }
 
-  set id(value) {
+  set id(value: number) {
     this._id = value;
   }
 
-  get description() {
+  get description(): string {
     return this._description;
   }
 
-  set description(value) {
+  set description(value: string) {
     this._description = value;
   }
 
-  get type() {
+  get type(): string {
     return this._type;
   }
 
-  set type(value) {
+  set type(value: string) {
     this._type = value;
   }
 
-  get value() {
+  get value(): number {
     return this._value;
   }
 
-  set value(value) {
+  set value(value: number) {
     this._value = value;
   }
 
-  get categoryId() {
+  get categoryId(): number {
     return this._categoryId;
   }
 
-  set categoryId(value) {
+  set categoryId(value: number) {
     this._categoryId = value;
   }
 
-  get date() {
+  get date(): Date {
     return this._date;
   }
 
-  set date(value) {
+  set date(value: Date) {
     this._date = value;
   }
 
-  get sourceAccountId() {
+  get sourceAccountId(): number {
     return this._sourceAccountId;
   }
 
-  set sourceAccountId(value) {
+  set sourceAccountId(value: number) {
     this._sourceAccountId = value;
   }
 
-  get destinationAccountId() {
+  get destinationAccountId(): number {
     return this._destinationAccountId;
   }
 
-  set destinationAccountId(value) {
+  set destinationAccountId(value: number) {
     this._destinationAccountId = value;
   }
 

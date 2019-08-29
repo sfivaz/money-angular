@@ -1,6 +1,10 @@
 <m-navbar></m-navbar>
 
 <main class="container">
+  <div class="d-flex justify-content-between">
+    <h2>Categories</h2>
+  </div>
+
   <m-category-row [category]="category" *ngFor="let category of categories" (onDelete)="openConfirm($event)"
                   (onEdit)="openForm($event)">
   </m-category-row>

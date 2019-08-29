@@ -1,8 +1,10 @@
+import {Transaction} from "../transaction/transaction";
+
 export class Account {
 
   private _id: number;
   private _name: string;
-  private _transactions: [];
+  private _transactions: Transaction[];
   private _balance: number;
 
   constructor(id, name, transactions, balance) {
@@ -43,6 +45,11 @@ export class Account {
 
   set balance(value) {
     this._balance = Number(value);
+  }
+
+  removeTransactionById(transactionId: number) {
+    const index = this.transactions.findIndex(transaction => transaction.id === transactionId);
+    this.transactions.splice(index, 1);
   }
 
   toJSON() {

@@ -6,12 +6,10 @@
     <h2>{{homepage.total}}</h2>
   </div>
 
-  <ul>
-    <m-account-row [account]="account" *ngFor="let account of homepage.accounts"
-               (onDelete)="openConfirm($event)"
-               (onEdit)="openForm($event)">
-    </m-account-row>
-  </ul>
+  <m-account-row [account]="account" *ngFor="let account of homepage.accounts"
+                 (onDelete)="openConfirm($event)"
+                 (onEdit)="openForm($event)">
+  </m-account-row>
 
   <m-account-form (onCreate)="addAccount($event)"></m-account-form>
 
