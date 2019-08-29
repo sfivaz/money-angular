@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 
 import {HomepageModule} from "./homepage/homepage.module";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import {HomepageModule} from "./homepage/homepage.module";
   ],
   imports: [
     BrowserModule,
-    HomepageModule
+    HomepageModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -22,5 +22,4 @@ export class AccountFormComponent implements OnInit {
   close() {
     this.visible = false;
   }
-
 }
