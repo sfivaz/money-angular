@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'm-navbar',
@@ -6,10 +7,17 @@ import {Component, OnInit} from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
   }
 
+  goToAccountsPage() {
+    this.router.navigateByUrl('');
+  }
+
+  goToCategoriesPage() {
+    this.router.navigateByUrl('categories');
+  }
 }
