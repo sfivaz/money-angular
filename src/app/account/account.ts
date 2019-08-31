@@ -39,8 +39,12 @@ export class Account {
   }
 
   get balance() {
+    if (this._transactions.length) {
+      const reducer = (total, transaction) => total + this.getValue(transaction);
+      const balance = this._transactions.reduce(reducer, 0);
+      return Number(balance.toFixed(2));
+    }
     return this._balance;
-    //
   }
 
   set balance(value) {
@@ -57,5 +61,19 @@ export class Account {
       id: this.id,
       name: this.name
     };
+  }
+
+  getValue(transaction) {
+    switch (transaction.type) {
+      case "income":
+        return transaction.value;
+      case "spending":
+        return -1 * transaction.value;
+      case "transfer":
+        if (this.id === transaction.destinationAccountId)
+          return transaction.value;
+        if (this.id === transaction.sourceAccountId)
+          return -1 * transaction.value;
+    }
   }
 }
