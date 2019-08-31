@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from "../../services/auth.service";
+import {TokenService} from "../../services/token.service";
+import {Router} from "@angular/router";
 
 @Component({
   templateUrl: './login.component.html',
@@ -8,8 +11,12 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  failed = false;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private authService: AuthService,
+              private tokenService: TokenService,
+              private route: Router) {
   }
 
   ngOnInit() {
@@ -20,8 +27,15 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.loginForm.get('email');
-    this.loginForm.get('password');
-    console.log("login...");
+    const email = this.loginForm.get('email').value;
+    const password = this.loginForm.get('password').value;
+
+    this.authService.login(email, password).subscribe(response => {
+      if (response.token) {
+        this.tokenService.setToken(response.token);
+        this.route.navigateByUrl('/home');
+      } else
+        this.failed = true;
+    });
   }
 }

@@ -6,12 +6,12 @@ const API = 'http://localhost:3000/login';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class AuthService {
 
   constructor(private http: HttpClient) {
   }
 
-  login(user) {
-    return this.http.post<any>(API, user);
+  login(email, password) {
+    return this.http.post<any>(API, {email, password});
   }
 }

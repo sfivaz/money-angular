@@ -21,7 +21,7 @@
         <div class="form-group">
           <a href="/register" class="forget-pwd">Don't have an account? Register </a>
         </div>
-        <div class="d-none p-3 bg-danger text-white">
+        <div *ngIf="failed" class="p-3 bg-danger text-white">
           Your username or/and your password was/were incorrect.
         </div>
       </form>
