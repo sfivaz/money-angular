@@ -3,10 +3,10 @@
 <main class="container">
   <div class="d-flex justify-content-between">
     <h2>Accounts</h2>
-    <h2>{{homepage.total}}</h2>
+    <h2>{{accounts.total}}</h2>
   </div>
 
-  <m-account-row [account]="account" *ngFor="let account of homepage.accounts"
+  <m-account-row [account]="account" *ngFor="let account of accounts.accounts"
                  (onDelete)="openConfirm($event)"
                  (onEdit)="openForm($event)">
   </m-account-row>

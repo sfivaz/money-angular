@@ -10,7 +10,7 @@ import {ConfirmDeleteComponent} from "../../shared/confirm-delete/confirm-delete
 })
 export class AccountsPageComponent implements OnInit {
 
-  homepage: Accounts = new Accounts();
+  accounts: Accounts = new Accounts();
 
   @ViewChild(AccountFormComponent, {static: false}) form: AccountFormComponent;
   @ViewChild(ConfirmDeleteComponent, {static: false}) confirm: ConfirmDeleteComponent;
@@ -19,10 +19,8 @@ export class AccountsPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.findAll().subscribe(accounts => {
-      this.homepage.accounts = this.homepage.accounts.concat(accounts);
-      console.log(this.homepage.accounts);
-    }, console.log);
+    this.service.findAll().subscribe(accounts =>
+      this.accounts.accounts = this.accounts.accounts.concat(accounts), console.log);
   }
 
   openForm(account?: Account) {
@@ -34,11 +32,11 @@ export class AccountsPageComponent implements OnInit {
   }
 
   addAccount(account: Account) {
-    this.homepage.accounts.push(account);
+    this.accounts.accounts.push(account);
   }
 
   removeAccount(accountId: number) {
     this.service.delete(accountId).subscribe(() =>
-      this.homepage.removeAccountById(accountId));
+      this.accounts.removeAccountById(accountId));
   }
 }
