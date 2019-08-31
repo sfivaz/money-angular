@@ -1,6 +1,6 @@
 <div class="template-row transaction-grid align-items-center clr-transfer-source">
   <span class="grid-date">{{transaction.date | date:'dd/MM/yyyy'}}</span>
-  <span class="grid-category">{{transaction.category}}</span>
+  <span class="grid-category">{{transaction.category.name}}</span>
   <span class="grid-description">{{transaction.description}}</span>
   <span class="grid-value">{{transaction.value | number : '1.2-2'}}</span>
   <button class="grid-btn-edit btn btn-primary mr-3" (click)="edit()"><i class="fa fa-pencil-square-o"></i></button>
