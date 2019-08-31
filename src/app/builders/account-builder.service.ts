@@ -15,7 +15,9 @@ export class AccountBuilderService {
   }
 
   build(accountObj) {
-    const transactions = this.transactionBuilder.buildMany(accountObj.transactions);
+    let transactions = [];
+    if (accountObj.transactions)
+      transactions = this.transactionBuilder.buildMany(accountObj.transactions);
     return new Account(accountObj.id, accountObj.name, transactions, accountObj.balance);
   }
 }

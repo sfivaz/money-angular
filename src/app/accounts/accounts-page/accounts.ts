@@ -17,7 +17,8 @@ export class Accounts {
   }
 
   get total(): number {
-    return Number(this._total.toFixed(2));
+    const total = this._accounts.reduce((total, account) => total + account.balance, 0);
+    return Number(total.toFixed(2));
   }
 
   set total(value: number) {

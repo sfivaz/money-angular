@@ -9,7 +9,7 @@ export class TransactionBuilderService {
   constructor() {
   }
 
-  buildMany(transactionsObj){
+  buildMany(transactionsObj) {
     return transactionsObj.map(transactionObj => this.build(transactionObj));
   }
 
