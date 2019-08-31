@@ -14,8 +14,7 @@ import {ConfirmDeleteModule} from "../../shared/confirm-delete/confirm-delete.mo
     CategoryRowModule,
     CategoryFormModule,
     ConfirmDeleteModule
-  ],
-  exports: [CategoriesPageComponent]
+  ]
 })
 export class CategoriesPageModule {
 }

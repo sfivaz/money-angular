@@ -14,8 +14,7 @@ import {NavbarModule} from "../../shared/navbar/navbar.module";
     AccountFormModule,
     ConfirmDeleteModule,
     NavbarModule
-  ],
-  exports: [AccountsPageComponent]
+  ]
 })
 export class AccountsPageModule {
 }
