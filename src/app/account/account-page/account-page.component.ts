@@ -22,6 +22,7 @@ export class AccountPageComponent implements OnInit {
 
   ngOnInit() {
     const accountObj = this.activatedRoute.snapshot.data.account;
+    console.log(accountObj);
     //TODO use Object assign maybe
     this.account = new Account(accountObj.id, accountObj.name, accountObj.transactions, accountObj.balance);
   }

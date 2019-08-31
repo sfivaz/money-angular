@@ -26,7 +26,7 @@
     </div>
 
     <button id="btn-clean-filter" class="btn-clean-filter btn btn-sm btn-secondary">clean filters</button>
-    <h3 id="filtered-balance"></h3>
+    <h3>{{account.filteredBalance}}</h3>
   </div>
 
   <m-transaction-row [transaction]="transaction" *ngFor="let transaction of account.transactions"

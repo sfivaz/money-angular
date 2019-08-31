@@ -1,6 +1,7 @@
 import {Category} from "../category/category";
+import {Filterable} from "../core/filterable";
 
-export class Transaction {
+export class Transaction extends Filterable {
   private _id: number;
   private _description: string;
   private _type: string;
@@ -11,6 +12,7 @@ export class Transaction {
   private _destinationAccountId: number;
 
   constructor(id, description, type, value, category, date, sourceAccountId, destinationAccountId) {
+    super();
     this._id = id;
     this._description = description;
     this._type = type;
