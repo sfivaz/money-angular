@@ -31,13 +31,11 @@ export class LoginComponent implements OnInit {
     const password = this.loginForm.get('password').value;
 
     this.authService.login(email, password).subscribe(response => {
-      if (response.token) {
-        this.tokenService.setToken(response.token);
-        this.route.navigateByUrl('/home');
-      } else {
+      if (response.status && response.status == 401) {
         this.failed = true;
         this.loginForm.reset();
-      }
+      } else
+        this.route.navigateByUrl('/home');
     });
   }
 }
