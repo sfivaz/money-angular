@@ -4,10 +4,15 @@ import {AccountsPageComponent} from "./accounts/accounts-page/accounts-page.comp
 import {AccountPageComponent} from "./account/account-page/account-page.component";
 import {AccountPageResolver} from "./account/account-page/account-page.resolver";
 import {CategoriesPageComponent} from "./categories/categories-page/categories-page.component";
+import {LoginComponent} from "./home/login/login.component";
 
 const routes: Routes = [
   {
     path: '',
+    component: LoginComponent
+  },
+  {
+    path: 'home',
     component: AccountsPageComponent
   },
   {

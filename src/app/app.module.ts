@@ -7,6 +7,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from './app-routing.module';
 import {AccountPageModule} from "./account/account-page/account-page.module";
 import {CategoriesPageModule} from "./categories/categories-page/categories-page.module";
+import {LoginModule} from "./home/login/login.module";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {CategoriesPageModule} from "./categories/categories-page/categories-page
     AccountsPageModule,
     AccountPageModule,
     CategoriesPageModule,
-    HttpClientModule
+    HttpClientModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]
