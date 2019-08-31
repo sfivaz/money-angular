@@ -13,7 +13,7 @@ import {TransactionFormModule} from "../../transaction/transaction-form/transact
     NavbarModule,
     TransactionRowModule,
     ConfirmDeleteModule,
-    TransactionFormModule
+    TransactionFormModule,
   ],
   exports: [AccountPageComponent]
 })

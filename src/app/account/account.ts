@@ -110,7 +110,7 @@ export class Account {
 
   filterType(type) {
     this._transactions.forEach(transaction => {
-      if (transaction.type !== type)
+      if (type && transaction.type !== type)
         transaction.addFilter("type");
       else
         transaction.removeFilter("type");

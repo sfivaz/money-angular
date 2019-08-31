@@ -5,6 +5,7 @@ import {TransactionService} from "../../services/transaction.service";
 import {ConfirmDeleteComponent} from "../../shared/confirm-delete/confirm-delete.component";
 import {Transaction} from "../../transaction/transaction";
 import {TransactionFormComponent} from "../../transaction/transaction-form/transaction-form.component";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   templateUrl: './account-page.component.html',
@@ -13,6 +14,7 @@ import {TransactionFormComponent} from "../../transaction/transaction-form/trans
 export class AccountPageComponent implements OnInit {
 
   account: Account;
+  types: string[] = ['', 'spending', 'income', 'transfer'];
 
   @ViewChild(TransactionFormComponent, {static: false}) form: TransactionFormComponent;
   @ViewChild(ConfirmDeleteComponent, {static: false}) confirm: ConfirmDeleteComponent;
@@ -42,5 +44,13 @@ export class AccountPageComponent implements OnInit {
   removeTransaction(transactionId: number) {
     this.service.delete(transactionId).subscribe(() =>
       this.account.removeTransactionById(transactionId));
+  }
+
+  getFilteredTransactions() {
+    return this.account.transactions.filter(transaction => transaction.filteredBy.length === 0);
+  }
+
+  filterByType(type) {
+    this.account.filterType(type);
   }
 }
