@@ -34,8 +34,10 @@ export class LoginComponent implements OnInit {
       if (response.token) {
         this.tokenService.setToken(response.token);
         this.route.navigateByUrl('/home');
-      } else
+      } else {
         this.failed = true;
+        this.loginForm.reset();
+      }
     });
   }
 }
