@@ -17,15 +17,11 @@ export class Accounts {
   }
 
   get total(): number {
-    return this._total;
+    return Number(this._total.toFixed(2));
   }
 
   set total(value: number) {
     this._total = value;
-  }
-
-  get totalFixed() {
-    return this.total.toFixed(2);
   }
 
   removeAccountById(accountId: number) {
