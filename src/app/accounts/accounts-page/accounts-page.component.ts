@@ -1,16 +1,16 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Homepage} from "./homepage";
-import {AccountFormComponent} from "../account/account-form/account-form.component";
-import {AccountService} from "../services/account.service";
-import {Account} from "../account/account";
-import {ConfirmDeleteComponent} from "../shared/confirm-delete/confirm-delete.component";
+import {Accounts} from "./accounts";
+import {AccountFormComponent} from "../../account/account-form/account-form.component";
+import {AccountService} from "../../services/account.service";
+import {Account} from "../../account/account";
+import {ConfirmDeleteComponent} from "../../shared/confirm-delete/confirm-delete.component";
 
 @Component({
-  templateUrl: './homepage.component.html'
+  templateUrl: './accounts-page.component.html'
 })
-export class HomepageComponent implements OnInit {
+export class AccountsPageComponent implements OnInit {
 
-  homepage: Homepage = new Homepage();
+  homepage: Accounts = new Accounts();
 
   @ViewChild(AccountFormComponent, {static: false}) form: AccountFormComponent;
   @ViewChild(ConfirmDeleteComponent, {static: false}) confirm: ConfirmDeleteComponent;

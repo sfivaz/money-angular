@@ -1,14 +1,14 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
-import {HomepageComponent} from "./homepage/homepage.component";
+import {AccountsPageComponent} from "./accounts/accounts-page/accounts-page.component";
 import {AccountPageComponent} from "./account/account-page/account-page.component";
 import {AccountPageResolver} from "./account/account-page/account-page.resolver";
-import {CategoriesPageComponent} from "./category/categories-page/categories-page.component";
+import {CategoriesPageComponent} from "./categories/categories-page/categories-page.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: HomepageComponent
+    component: AccountsPageComponent
   },
   {
     path: 'account/:id',

@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Category} from "../category";
+import {Category} from "../../category/category";
 import {CategoryService} from "../../services/category.service";
 import {ConfirmDeleteComponent} from "../../shared/confirm-delete/confirm-delete.component";
-import {CategoryFormComponent} from "../category-form/category-form.component";
+import {CategoryFormComponent} from "../../category/category-form/category-form.component";
 
 @Component({
   selector: 'm-categories-page',

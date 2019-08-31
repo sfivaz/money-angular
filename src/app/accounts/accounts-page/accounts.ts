@@ -1,6 +1,6 @@
-import {Account} from "../account/account";
+import {Account} from "../../account/account";
 
-export class Homepage {
+export class Accounts {
   private _accounts: Account[];
   private _total: number;
 
