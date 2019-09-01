@@ -28,7 +28,8 @@ export class TransactionFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private service: TransactionService,
     private categoryService: CategoryService,
-    private accountService: AccountService) {
+    private accountService: AccountService,
+    private transactionBuilder: TransactionBuilderService) {
   }
 
   ngOnInit() {
@@ -55,6 +56,7 @@ export class TransactionFormComponent implements OnInit {
       id: [this.transaction.id || null],
       description: [this.transaction.description || ''],
       value: [this.transaction.value || ''],
+      isMonthly: [this.transaction.isMonthly || ''],
       date: [dateString],
       type: [this.transaction.type],
       categoryId: [this.transaction.categoryId || null],
@@ -75,9 +77,11 @@ export class TransactionFormComponent implements OnInit {
     const dateString = this.transactionForm.get('date').value;
     this.transaction.date = new Date(dateString);
     this.transaction.type = this.transactionForm.get('type').value;
+    this.transaction.isMonthly = this.transactionForm.get('isMonthly').value;
     this.transaction.categoryId = this.transactionForm.get('categoryId').value;
     this.transaction.sourceAccountId = this.transactionForm.get('sourceAccountId').value;
     this.transaction.destinationAccountId = this.transactionForm.get('destinationAccountId').value;
+    console.log(this.transaction);
   }
 
   submit() {

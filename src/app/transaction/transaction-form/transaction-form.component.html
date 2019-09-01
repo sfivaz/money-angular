@@ -19,7 +19,13 @@
         </select>
       </div>
       <div class="col">
-        <label>value</label>
+        <div class="d-flex justify-content-between">
+          <label>value</label>
+          <div class="d-flex align-items-center">
+            <label class="mr-1" for="monthly">monthly?</label>
+            <input formControlName="isMonthly" id="monthly" type="checkbox">
+          </div>
+        </div>
         <input formControlName="value" class="form-control">
         <small *ngIf="transactionForm.get('value').errors?.required" class="text-danger d-block mt-2">
           transaction value is required!
