@@ -18,7 +18,7 @@ export class Transaction extends Filterable {
     this._type = type;
     this._value = value;
     this._category = category;
-    this._date = date;
+    this._date = new Date(date);
     this._sourceAccountId = sourceAccountId;
     this._destinationAccountId = destinationAccountId;
   }
@@ -76,8 +76,8 @@ export class Transaction extends Filterable {
     return this._date;
   }
 
-  set date(value: Date) {
-    this._date = value;
+  set date(value) {
+    this._date = new Date(value);
   }
 
   get sourceAccountId(): number {
