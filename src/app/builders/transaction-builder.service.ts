@@ -14,7 +14,13 @@ export class TransactionBuilderService {
   }
 
   build(transactionObj) {
-    const transaction = new Transaction(null,
+    const transaction = this.buildEmpty();
+    return Object.assign(transaction, transactionObj);
+  }
+
+  buildEmpty() {
+    return new Transaction(null,
+      null,
       null,
       null,
       null,
@@ -22,6 +28,5 @@ export class TransactionBuilderService {
       null,
       null,
       null);
-    return Object.assign(transaction, transactionObj);
   }
 }

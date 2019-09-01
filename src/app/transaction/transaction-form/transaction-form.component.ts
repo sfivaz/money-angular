@@ -7,6 +7,7 @@ import {CategoryService} from "../../services/category.service";
 import {AccountService} from "../../services/account.service";
 import {Account} from "../../account/account";
 import * as moment from "moment";
+import {TransactionBuilderService} from "../../builders/transaction-builder.service";
 
 @Component({
   selector: 'm-transaction-form',
@@ -18,15 +19,7 @@ export class TransactionFormComponent implements OnInit {
   transactionForm: FormGroup;
   @Output() onCreate = new EventEmitter();
   @Output() onEdit = new EventEmitter();
-  transaction: Transaction = new Transaction(
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null);
+  transaction: Transaction;
   types: string[] = ['spending', 'income', 'transfer'];
   categories: Category[] = [];
   accounts: Account[] = [];
@@ -39,6 +32,7 @@ export class TransactionFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.transaction = this.transactionBuilder.buildEmpty();
     this.categoryService.findAll()
       .subscribe(categories => this.categories = categories);
     this.accountService.findAll()
@@ -71,15 +65,7 @@ export class TransactionFormComponent implements OnInit {
 
   close() {
     this.visible = false;
-    this.transaction = new Transaction(
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null);
+    this.transaction = this.transactionBuilder.buildEmpty();
   }
 
   updateTransaction() {

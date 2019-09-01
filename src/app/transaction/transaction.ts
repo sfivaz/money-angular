@@ -10,14 +10,16 @@ export class Transaction extends Filterable {
   private _date: Date;
   private _sourceAccountId: number;
   private _destinationAccountId: number;
+  private _isMonthly: boolean;
 
-  constructor(id, description, type, value, category, date, sourceAccountId, destinationAccountId) {
+  constructor(id, description, type, value, category, date, sourceAccountId, destinationAccountId, isMonthly) {
     super();
     this._id = id;
     this._description = description;
     this._type = type;
     this._value = value;
     this._category = category;
+    this._isMonthly = isMonthly;
     this._date = new Date(date);
     this._sourceAccountId = sourceAccountId;
     this._destinationAccountId = destinationAccountId;
@@ -96,6 +98,14 @@ export class Transaction extends Filterable {
     this._destinationAccountId = value;
   }
 
+  get isMonthly(): boolean {
+    return this._isMonthly;
+  }
+
+  set isMonthly(value: boolean) {
+    this._isMonthly = value;
+  }
+
   toJSON() {
     return {
       id: this.id,
@@ -104,6 +114,7 @@ export class Transaction extends Filterable {
       value: this.value,
       categoryId: this.categoryId,
       date: this.date,
+      isMonthly: this.isMonthly,
       sourceAccountId: this.sourceAccountId,
       destinationAccountId: this.destinationAccountId
     };
