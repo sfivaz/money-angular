@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {AccountsPageComponent} from "./accounts/accounts-page/accounts-page.component";
 import {AccountPageComponent} from "./account/account-page/account-page.component";
-import {AccountPageResolver} from "./account/account-page/account-page.resolver";
 import {CategoriesPageComponent} from "./categories/categories-page/categories-page.component";
 import {LoginComponent} from "./home/login/login.component";
 
@@ -17,8 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'account/:id',
-    component: AccountPageComponent,
-    resolve: {account: AccountPageResolver}
+    component: AccountPageComponent
   },
   {
     path: 'categories',

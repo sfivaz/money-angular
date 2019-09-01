@@ -7,6 +7,7 @@ import {Transaction} from "../../transaction/transaction";
 import {TransactionFormComponent} from "../../transaction/transaction-form/transaction-form.component";
 import {Category} from "../../category/category";
 import {CategoryService} from "../../services/category.service";
+import {AccountService} from "../../services/account.service";
 
 @Component({
   templateUrl: './account-page.component.html',
@@ -14,24 +15,23 @@ import {CategoryService} from "../../services/category.service";
 })
 export class AccountPageComponent implements OnInit {
 
-  account: Account;
+  account: Account = new Account(null, null, null, null);
   types: string[] = ['', 'spending', 'income', 'transfer'];
   categories: Category[];
 
   @ViewChild(TransactionFormComponent, {static: false}) form: TransactionFormComponent;
   @ViewChild(ConfirmDeleteComponent, {static: false}) confirm: ConfirmDeleteComponent;
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private service: TransactionService,
-              private categoryService: CategoryService) {
+  constructor(private service: TransactionService,
+              private accountService: AccountService,
+              private categoryService: CategoryService,
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
-    const accountObj = this.activatedRoute.snapshot.data.account;
-    console.log(accountObj);
-    //TODO use Object assign maybe
-    this.account = new Account(accountObj.id, accountObj.name, accountObj.transactions, accountObj.balance);
-    this.account.orderTransactions();
+    const id = this.activatedRoute.snapshot.params.id;
+    this.accountService.find(id)
+      .subscribe(account => this.account = account);
 
     this.categoryService.findAll().subscribe(categories =>
       this.categories = [{id: null, name: null, budget: null}].concat(categories));
