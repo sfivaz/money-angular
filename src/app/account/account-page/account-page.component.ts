@@ -21,6 +21,8 @@ export class AccountPageComponent implements OnInit {
   @ViewChild(TransactionFormComponent, {static: false}) form: TransactionFormComponent;
   @ViewChild(ConfirmDeleteComponent, {static: false}) confirm: ConfirmDeleteComponent;
 
+  // @ViewChild('useBudget', {static: false}) useBudget;
+
   constructor(private activatedRoute: ActivatedRoute,
               private service: TransactionService,
               private categoryService: CategoryService) {
@@ -75,10 +77,12 @@ export class AccountPageComponent implements OnInit {
       this.account.clearFilter('month');
   }
 
-  filterByCategory(category) {
-    if (category !== 'null')
-      this.account.filterCategory(category, false);
-    else
+  filterByCategory(categoryId, useBudget) {
+    categoryId = Number(categoryId);
+    if (categoryId) {
+      const category = this.categories.find(category => category.id === Number(categoryId));
+      this.account.filterCategory(category, useBudget);
+    } else
       this.account.clearFilter('category');
   }
 }

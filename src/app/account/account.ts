@@ -1,5 +1,6 @@
 import {Transaction} from "../transaction/transaction";
 import * as moment from "moment";
+import {Category} from "../category/category";
 
 export class Account {
 
@@ -96,21 +97,19 @@ export class Account {
   }
 
   filterMonths(month, year) {
-    if (month && year) {
-      const date = moment().month(month).year(year);
-      const firstDay = date.clone().startOf('month');
-      const lastDay = date.clone().endOf('month');
+    const date = moment().month(month).year(year);
+    const firstDay = date.clone().startOf('month');
+    const lastDay = date.clone().endOf('month');
 
-      this._transactions.forEach(transaction => {
-        if (moment(transaction.date) < firstDay || moment(transaction.date) > lastDay)
-          transaction.addFilter("month");
-        else
-          transaction.removeFilter("month");
-      });
-    }
+    this._transactions.forEach(transaction => {
+      if (moment(transaction.date) < firstDay || moment(transaction.date) > lastDay)
+        transaction.addFilter("month");
+      else
+        transaction.removeFilter("month");
+    });
   }
 
-  filterType(type) {
+  filterType(type: string) {
     this._transactions.forEach(transaction => {
       if (transaction.type !== type)
         transaction.addFilter("type");
@@ -119,7 +118,7 @@ export class Account {
     });
   }
 
-  filterCategory(category, useBudget) {
+  filterCategory(category: Category, useBudget: boolean) {
     this._transactions.forEach(transaction => {
       if (transaction.categoryId !== category.id)
         transaction.addFilter("category");
