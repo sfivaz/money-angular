@@ -128,7 +128,7 @@ export class Account {
     this.budget = useBudget ? category.budget : 0;
   }
 
-  clearFilter(filter = null) {
+  cleanFilter(filter = null) {
     //TODO filter == null? why not (!filter)
     if (filter == null)
       this.clearAllFilters();

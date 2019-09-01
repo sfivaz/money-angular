@@ -61,7 +61,7 @@ export class AccountPageComponent implements OnInit {
     if (type)
       this.account.filterType(type);
     else
-      this.account.clearFilter('type');
+      this.account.cleanFilter('type');
   }
 
   filterByDate(date: string) {
@@ -74,7 +74,7 @@ export class AccountPageComponent implements OnInit {
       const year = Number(dateArray[0]);
       this.account.filterMonths(month, year);
     } else
-      this.account.clearFilter('month');
+      this.account.cleanFilter('month');
   }
 
   filterByCategory(categoryId, useBudget) {
@@ -83,6 +83,10 @@ export class AccountPageComponent implements OnInit {
       const category = this.categories.find(category => category.id === Number(categoryId));
       this.account.filterCategory(category, useBudget);
     } else
-      this.account.clearFilter('category');
+      this.account.cleanFilter('category');
+  }
+
+  cleanFilters() {
+    this.account.cleanFilter();
   }
 }

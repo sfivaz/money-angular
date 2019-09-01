@@ -6,7 +6,7 @@
     <h2>{{account.balance}}</h2>
   </div>
 
-  <form class="filter-bar pb-2">
+  <div class="filter-bar pb-2">
     <div class="filter-date d-flex">
       <!--        //TODO add min and max value based on the transactions's date in the account-->
       <label for="iptDateFilter" class="filter__label">Choose a month</label>
@@ -33,9 +33,9 @@
              (change)="filterByCategory(filterCategory.value, $event.target.value)">
     </div>
 
-    <button id="btn-clean-filter" class="btn-clean-filter btn btn-sm btn-secondary">clean filters</button>
+    <button class="btn-clean-filter btn btn-sm btn-secondary" (click)="cleanFilters()">clean filters</button>
     <h3>{{account.filteredBalance}}</h3>
-  </form>
+  </div>
 
   <m-transaction-row [transaction]="transaction" *ngFor="let transaction of getFilteredTransactions()"
                      (onDelete)="openConfirm($event)"
