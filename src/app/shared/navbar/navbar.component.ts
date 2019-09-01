@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {TokenService} from "../../services/token.service";
+import * as jwtDecode from "jwt-decode";
 
 @Component({
   selector: 'm-navbar',
@@ -12,6 +13,12 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  getFullName() {
+    const token = this.tokenService.getToken();
+    const authData = jwtDecode(token);
+    return authData.user.firstName + ' ' + authData.user.lastName;
   }
 
   goToAccountsPage() {
