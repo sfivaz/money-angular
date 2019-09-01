@@ -96,21 +96,23 @@ export class Account {
   }
 
   filterMonths(month, year) {
-    const date = moment().month(month).year(year);
-    const firstDay = date.clone().startOf('month');
-    const lastDay = date.clone().endOf('month');
+    if (month && year) {
+      const date = moment().month(month).year(year);
+      const firstDay = date.clone().startOf('month');
+      const lastDay = date.clone().endOf('month');
 
-    this._transactions.forEach(transaction => {
-      if (moment(transaction.date) < firstDay || moment(transaction.date) > lastDay)
-        transaction.addFilter("month");
-      else
-        transaction.removeFilter("month");
-    });
+      this._transactions.forEach(transaction => {
+        if (moment(transaction.date) < firstDay || moment(transaction.date) > lastDay)
+          transaction.addFilter("month");
+        else
+          transaction.removeFilter("month");
+      });
+    }
   }
 
   filterType(type) {
     this._transactions.forEach(transaction => {
-      if (type && transaction.type !== type)
+      if (transaction.type !== type)
         transaction.addFilter("type");
       else
         transaction.removeFilter("type");

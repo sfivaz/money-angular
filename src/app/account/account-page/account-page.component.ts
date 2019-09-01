@@ -51,6 +51,20 @@ export class AccountPageComponent implements OnInit {
   }
 
   filterByType(type) {
-    this.account.filterType(type);
+    if (type)
+      this.account.filterType(type);
+    else
+      this.account.clearFilter('type');
+  }
+
+  filterByDate(date) {
+    if (date) {
+      //the input type="month" returns the value in this format: YYYY-MM
+      //then it's converted to the format [YYYY, MM]
+      const dateArray = date.split('-');
+      //the -1 is because of the way the month is calculated (0 to 11) instead of 1 to 12
+      this.account.filterMonths(dateArray [1] - 1, dateArray[0]);
+    } else
+      this.account.clearFilter('month');
   }
 }
