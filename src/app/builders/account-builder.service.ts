@@ -18,6 +18,10 @@ export class AccountBuilderService {
     let transactions = [];
     if (accountObj.transactions)
       transactions = this.transactionBuilder.buildMany(accountObj.transactions);
-    return new Account(accountObj.id, accountObj.name, transactions, accountObj.balance);
+    return new Account(accountObj.id, accountObj.name, transactions, accountObj.balance, accountObj.actualBalance);
+  }
+
+  buildEmpty(){
+    return new Account(null, null, null, null, null);
   }
 }

@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Account} from "../account";
 import {AccountService} from "../../services/account.service";
+import {AccountBuilderService} from "../../builders/account-builder.service";
 
 @Component({
   selector: 'm-account-form',
@@ -13,12 +14,15 @@ export class AccountFormComponent implements OnInit {
   accountForm: FormGroup;
   @Output() onCreate = new EventEmitter();
   @Output() onEdit = new EventEmitter();
-  account: Account = new Account(null, null, null, null, null);
+  account: Account;
 
-  constructor(private formBuilder: FormBuilder, private accountService: AccountService) {
+  constructor(private formBuilder: FormBuilder,
+              private accountService: AccountService,
+              private accountBuilder: AccountBuilderService) {
   }
 
   ngOnInit() {
+    this.account = this.accountBuilder.buildEmpty();
   }
 
   open(account?: Account) {
@@ -32,7 +36,7 @@ export class AccountFormComponent implements OnInit {
   close() {
     this.visible = false;
     //TODO use AccountBuilderService
-    this.account = new Account(null, null, null, null, null);
+    this.account = this.accountBuilder.buildEmpty();
   }
 
   updateAccount() {

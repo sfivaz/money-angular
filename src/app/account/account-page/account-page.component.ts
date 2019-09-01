@@ -8,6 +8,7 @@ import {TransactionFormComponent} from "../../transaction/transaction-form/trans
 import {Category} from "../../category/category";
 import {CategoryService} from "../../services/category.service";
 import {AccountService} from "../../services/account.service";
+import {AccountBuilderService} from "../../builders/account-builder.service";
 
 @Component({
   templateUrl: './account-page.component.html',
@@ -15,7 +16,7 @@ import {AccountService} from "../../services/account.service";
 })
 export class AccountPageComponent implements OnInit {
 
-  account: Account = new Account(null, null, null, null, null);
+  account: Account;
   types: string[] = ['', 'spending', 'income', 'transfer'];
   categories: Category[];
 
@@ -25,10 +26,13 @@ export class AccountPageComponent implements OnInit {
   constructor(private service: TransactionService,
               private accountService: AccountService,
               private categoryService: CategoryService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private accountBuilder: AccountBuilderService) {
   }
 
   ngOnInit() {
+    this.account = this.accountBuilder.buildEmpty();
+
     const id = this.activatedRoute.snapshot.params.id;
     this.accountService.find(id)
       .subscribe(account => this.account = account);
