@@ -39,7 +39,7 @@
 
   <m-transaction-row [transaction]="transaction"
                      [currentAccountId]="account.id"
-                     *ngFor="let transaction of getFilteredTransactions()"
+                     *ngFor="let transaction of this.account.filteredTransactions"
                      (onDelete)="openConfirm($event)"
                      (onEdit)="openForm($event)">
   </m-transaction-row>

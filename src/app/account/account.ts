@@ -96,6 +96,10 @@ export class Account {
     return Number(balanceFiltered.toFixed(2));
   }
 
+  get filteredTransactions() {
+    return this.transactions.filter(transaction => transaction.filteredBy.length === 0);
+  }
+
   filterMonths(month: number, year: number) {
     const date = moment().month(month).year(year);
     const firstDay = date.clone().startOf('month');

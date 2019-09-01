@@ -54,10 +54,6 @@ export class AccountPageComponent implements OnInit {
       this.account.removeTransactionById(transactionId));
   }
 
-  getFilteredTransactions() {
-    return this.account.transactions.filter(transaction => transaction.filteredBy.length === 0);
-  }
-
   filterByType(type) {
     if (type)
       this.account.filterType(type);
