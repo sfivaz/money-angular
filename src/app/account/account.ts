@@ -65,6 +65,11 @@ export class Account {
     this._actualBalance = value;
   }
 
+  get balanceDifference() {
+    const balanceDifference = this.actualBalance - this.balance;
+    return Number(balanceDifference.toFixed(2));
+  }
+
   toJSON() {
     return {
       id: this.id,
