@@ -15,7 +15,7 @@ import {AccountService} from "../../services/account.service";
 })
 export class AccountPageComponent implements OnInit {
 
-  account: Account = new Account(null, null, null, null);
+  account: Account = new Account(null, null, null, null, null);
   types: string[] = ['', 'spending', 'income', 'transfer'];
   categories: Category[];
 

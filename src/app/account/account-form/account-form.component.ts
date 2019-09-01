@@ -13,7 +13,7 @@ export class AccountFormComponent implements OnInit {
   accountForm: FormGroup;
   @Output() onCreate = new EventEmitter();
   @Output() onEdit = new EventEmitter();
-  account: Account = new Account(null, null, null, null);
+  account: Account = new Account(null, null, null, null, null);
 
   constructor(private formBuilder: FormBuilder, private accountService: AccountService) {
   }
@@ -31,7 +31,8 @@ export class AccountFormComponent implements OnInit {
 
   close() {
     this.visible = false;
-    this.account = new Account(null, null, null, null);
+    //TODO use AccountBuilderService
+    this.account = new Account(null, null, null, null, null);
   }
 
   updateAccount() {
@@ -39,6 +40,7 @@ export class AccountFormComponent implements OnInit {
     if (id)
       this.account.id = id;
     this.account.name = this.accountForm.get('name').value;
+    this.account.actualBalance = this.accountForm.get('actualBalance').value || null;
   }
 
   submit() {
@@ -68,7 +70,8 @@ export class AccountFormComponent implements OnInit {
   buildForm() {
     this.accountForm = this.formBuilder.group({
       id: [this.account.id || ''],
-      name: [this.account.name || '', Validators.required]
+      name: [this.account.name || '', Validators.required],
+      actualBalance: [this.account.actualBalance || '']
     });
   }
 
