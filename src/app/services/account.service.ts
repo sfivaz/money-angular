@@ -4,8 +4,9 @@ import {Account} from "../account/account";
 import {TokenService} from "./token.service";
 import {map} from "rxjs/operators";
 import {AccountBuilderService} from "../builders/account-builder.service";
+import {API} from "../helpers/API";
 
-const API = 'http://localhost:3000/accounts';
+const API_URL = API + '/accounts';
 
 @Injectable({
   providedIn: 'root'
@@ -24,26 +25,26 @@ export class AccountService {
   }
 
   findAll() {
-    return this.http.get<Account[]>(API, {headers: this.headers})
+    return this.http.get<Account[]>(API_URL, {headers: this.headers})
       .pipe(map(accountsObj => this.accountBuilder.buildMany(accountsObj)));
   }
 
   find(id: number) {
-    return this.http.get<Account>(API + '/' + id, {headers: this.headers})
+    return this.http.get<Account>(API_URL + '/' + id, {headers: this.headers})
       .pipe(map(accountObj => this.accountBuilder.build(accountObj)));
   }
 
   create(account: Account) {
-    return this.http.post<Account>(API, account, {headers: this.headers})
+    return this.http.post<Account>(API_URL, account, {headers: this.headers})
       .pipe(map(accountObj => this.accountBuilder.build(accountObj)));
   }
 
   edit(account: Account) {
-    return this.http.put<Account>(API + '/' + account.id, account, {headers: this.headers})
+    return this.http.put<Account>(API_URL + '/' + account.id, account, {headers: this.headers})
       .pipe(map(accountObj => this.accountBuilder.build(accountObj)));
   }
 
   delete(id: number) {
-    return this.http.delete(API + '/' + id, {headers: this.headers});
+    return this.http.delete(API_URL + '/' + id, {headers: this.headers});
   }
 }
