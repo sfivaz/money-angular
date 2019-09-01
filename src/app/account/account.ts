@@ -68,7 +68,8 @@ export class Account {
   toJSON() {
     return {
       id: this.id,
-      name: this.name
+      name: this.name,
+      actualBalance: this.actualBalance
     };
   }
 
