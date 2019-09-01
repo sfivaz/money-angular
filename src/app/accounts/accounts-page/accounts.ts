@@ -2,7 +2,6 @@ import {Account} from "../../account/account";
 
 export class Accounts {
   private _accounts: Account[];
-  private _total: number;
 
   constructor() {
     this._accounts = [];
@@ -21,8 +20,13 @@ export class Accounts {
     return Number(total.toFixed(2));
   }
 
-  set total(value: number) {
-    this._total = value;
+  get totalActualBalance() {
+    return this._accounts.reduce((total, account) => total + account.actualBalance, 0);
+  }
+
+  get totalDifference() {
+    const totalDifference = this.totalActualBalance - this.total;
+    return Number(totalDifference.toFixed(2));
   }
 
   removeAccountById(accountId: number) {

@@ -1,9 +1,10 @@
 <m-navbar></m-navbar>
 
 <main class="container">
-  <div class="d-flex justify-content-between">
-    <h2>Accounts</h2>
-    <h2>{{accounts.total}}</h2>
+  <div class="d-flex align-items-baseline">
+    <h2 class="f-8">Accounts</h2>
+    <h2 class="f-1">{{accounts.total}}</h2>
+    <h6 class="f-1 text-right">{{accounts.totalDifference}}</h6>
   </div>
 
   <m-account-row [account]="account" *ngFor="let account of accounts.accounts"
