@@ -1,11 +1,12 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {Transaction} from "../transaction";
 import {TransactionService} from "../../services/transaction.service";
 import {Category} from "../../category/category";
 import {CategoryService} from "../../services/category.service";
 import {AccountService} from "../../services/account.service";
 import {Account} from "../../account/account";
+import * as moment from "moment";
 
 @Component({
   selector: 'm-transaction-form',
@@ -53,11 +54,14 @@ export class TransactionFormComponent implements OnInit {
   }
 
   buildForm() {
+    const date = this.transaction.date || new Date();
+    const dateString = moment(date).format('YYYY-MM-DD');
+
     this.transactionForm = this.formBuilder.group({
       id: [this.transaction.id || null],
       description: [this.transaction.description || ''],
       value: [this.transaction.value || ''],
-      date: [this.transaction.date || ''],
+      date: [dateString],
       type: [this.transaction.type],
       categoryId: [this.transaction.categoryId || null],
       sourceAccountId: [this.transaction.sourceAccountId || null],
