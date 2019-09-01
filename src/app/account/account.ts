@@ -141,4 +141,8 @@ export class Account {
   clearAllFilters() {
     this._transactions.forEach(transaction => transaction.filteredBy = []);
   }
+
+  orderTransactions() {
+    this._transactions.sort((a, b) => b.date.getTime() - a.date.getTime());
+  }
 }

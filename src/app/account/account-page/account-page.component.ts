@@ -31,6 +31,7 @@ export class AccountPageComponent implements OnInit {
     console.log(accountObj);
     //TODO use Object assign maybe
     this.account = new Account(accountObj.id, accountObj.name, accountObj.transactions, accountObj.balance);
+    this.account.orderTransactions();
 
     this.categoryService.findAll().subscribe(categories =>
       this.categories = [{id: null, name: null, budget: null}].concat(categories));
