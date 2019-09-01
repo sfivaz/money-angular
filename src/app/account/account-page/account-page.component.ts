@@ -5,7 +5,8 @@ import {TransactionService} from "../../services/transaction.service";
 import {ConfirmDeleteComponent} from "../../shared/confirm-delete/confirm-delete.component";
 import {Transaction} from "../../transaction/transaction";
 import {TransactionFormComponent} from "../../transaction/transaction-form/transaction-form.component";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {Category} from "../../category/category";
+import {CategoryService} from "../../services/category.service";
 
 @Component({
   templateUrl: './account-page.component.html',
@@ -15,11 +16,14 @@ export class AccountPageComponent implements OnInit {
 
   account: Account;
   types: string[] = ['', 'spending', 'income', 'transfer'];
+  categories: Category[];
 
   @ViewChild(TransactionFormComponent, {static: false}) form: TransactionFormComponent;
   @ViewChild(ConfirmDeleteComponent, {static: false}) confirm: ConfirmDeleteComponent;
 
-  constructor(private activatedRoute: ActivatedRoute, private service: TransactionService) {
+  constructor(private activatedRoute: ActivatedRoute,
+              private service: TransactionService,
+              private categoryService: CategoryService) {
   }
 
   ngOnInit() {
@@ -27,6 +31,9 @@ export class AccountPageComponent implements OnInit {
     console.log(accountObj);
     //TODO use Object assign maybe
     this.account = new Account(accountObj.id, accountObj.name, accountObj.transactions, accountObj.balance);
+
+    this.categoryService.findAll().subscribe(categories =>
+      this.categories = [{id: null, name: null, budget: null}].concat(categories));
   }
 
   openForm(transaction?: Transaction) {
@@ -66,5 +73,12 @@ export class AccountPageComponent implements OnInit {
       this.account.filterMonths(dateArray [1] - 1, dateArray[0]);
     } else
       this.account.clearFilter('month');
+  }
+
+  filterByCategory(category) {
+    if (category !== 'null')
+      this.account.filterCategory(category, false);
+    else
+      this.account.clearFilter('category');
   }
 }

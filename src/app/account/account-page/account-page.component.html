@@ -25,7 +25,9 @@
     <div class="filter-category d-flex">
       <label for="slcCategoryFilter" class="filter__label">Choose a category</label>
       <select id="slcCategoryFilter" class="filter__select custom-select custom-select-sm"
-              (change)="filterByType($event.target.value)"></select>
+              (change)="filterByCategory($event.target.value)">
+        <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+      </select>
       <label for="cbxBudget">use Budget</label>
       <input type="checkbox" id="cbxBudget" disabled>
     </div>
