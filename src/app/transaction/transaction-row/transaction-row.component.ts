@@ -8,9 +8,11 @@ import {Transaction} from "../transaction";
 })
 export class TransactionRowComponent implements OnInit {
 
+  @Input() currentAccountId: number;
   @Input() transaction: Transaction;
   @Output() onDelete = new EventEmitter();
   @Output() onEdit = new EventEmitter();
+  test: string = 'bg-danger';
 
   constructor() {
   }
@@ -24,6 +26,20 @@ export class TransactionRowComponent implements OnInit {
 
   edit() {
     this.onEdit.emit(this.transaction);
+  }
+
+  getRowClass() {
+    return 'template-row transaction-grid align-items-center ' + this.getColor();
+  }
+
+  getColor() {
+    if (this.transaction.type === "transfer") {
+      if (this.transaction.sourceAccountId === this.currentAccountId)
+        return "clr-transfer-source";
+      else
+        return "clr-transfer-destiny";
+    } else
+      return " clr-" + this.transaction.type.toLowerCase();
   }
 
 }

@@ -37,7 +37,9 @@
     <h3>{{account.filteredBalance}}</h3>
   </div>
 
-  <m-transaction-row [transaction]="transaction" *ngFor="let transaction of getFilteredTransactions()"
+  <m-transaction-row [transaction]="transaction"
+                     [currentAccountId]="account.id"
+                     *ngFor="let transaction of getFilteredTransactions()"
                      (onDelete)="openConfirm($event)"
                      (onEdit)="openForm($event)">
   </m-transaction-row>
