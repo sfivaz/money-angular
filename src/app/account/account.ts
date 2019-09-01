@@ -9,12 +9,14 @@ export class Account {
   private _transactions: Transaction[];
   private _balance: number;
   private _budget: number;
+  private _actualBalance: number;
 
-  constructor(id, name, transactions, balance) {
+  constructor(id, name, transactions, balance, actualBalance) {
     this._id = id;
     this._name = name;
     this._transactions = transactions || [];
     this._balance = Number(balance);
+    this._actualBalance = actualBalance;
     this._budget = 0;
   }
 
@@ -34,8 +36,12 @@ export class Account {
     this._name = value;
   }
 
-  get transactions() {
+  get transactions(): Transaction[] {
     return this._transactions;
+  }
+
+  set transactions(value: Transaction[]) {
+    this._transactions = value;
   }
 
   get balance() {
@@ -50,6 +56,23 @@ export class Account {
   set balance(value) {
     this._balance = Number(value);
   }
+
+  get actualBalance(): number {
+    return this._actualBalance;
+  }
+
+  set actualBalance(value: number) {
+    this._actualBalance = value;
+  }
+
+  toJSON() {
+    return {
+      id: this.id,
+      name: this.name
+    };
+  }
+
+  /***/
 
   removeTransactionById(transactionId: number) {
     const index = this.transactions.findIndex(transaction => transaction.id === transactionId);
@@ -68,13 +91,6 @@ export class Account {
         if (this.id === transaction.sourceAccountId)
           return -1 * transaction.value;
     }
-  }
-
-  toJSON() {
-    return {
-      id: this.id,
-      name: this.name
-    };
   }
 
   get budget(): number {
