@@ -21,8 +21,6 @@ export class AccountPageComponent implements OnInit {
   @ViewChild(TransactionFormComponent, {static: false}) form: TransactionFormComponent;
   @ViewChild(ConfirmDeleteComponent, {static: false}) confirm: ConfirmDeleteComponent;
 
-  // @ViewChild('useBudget', {static: false}) useBudget;
-
   constructor(private activatedRoute: ActivatedRoute,
               private service: TransactionService,
               private categoryService: CategoryService) {
@@ -66,13 +64,15 @@ export class AccountPageComponent implements OnInit {
       this.account.clearFilter('type');
   }
 
-  filterByDate(date) {
+  filterByDate(date: string) {
     if (date) {
       //the input type="month" returns the value in this format: YYYY-MM
       //then it's converted to the format [YYYY, MM]
       const dateArray = date.split('-');
       //the -1 is because of the way the month is calculated (0 to 11) instead of 1 to 12
-      this.account.filterMonths(dateArray [1] - 1, dateArray[0]);
+      const month = Number(dateArray[1]) - 1;
+      const year = Number(dateArray[0]);
+      this.account.filterMonths(month, year);
     } else
       this.account.clearFilter('month');
   }

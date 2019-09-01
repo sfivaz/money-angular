@@ -96,7 +96,7 @@ export class Account {
     return Number(balanceFiltered.toFixed(2));
   }
 
-  filterMonths(month, year) {
+  filterMonths(month: number, year: number) {
     const date = moment().month(month).year(year);
     const firstDay = date.clone().startOf('month');
     const lastDay = date.clone().endOf('month');
