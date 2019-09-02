@@ -77,7 +77,7 @@ export class TransactionFormComponent implements OnInit {
     const dateString = this.transactionForm.get('date').value;
     this.transaction.date = new Date(dateString);
     this.transaction.type = this.transactionForm.get('type').value;
-    this.transaction.isMonthly = this.transactionForm.get('isMonthly').value;
+    this.transaction.isMonthly = this.transactionForm.get('isMonthly').value || false;
     this.transaction.categoryId = this.transactionForm.get('categoryId').value;
     this.transaction.sourceAccountId = this.transactionForm.get('sourceAccountId').value;
     this.transaction.destinationAccountId = this.transactionForm.get('destinationAccountId').value;
