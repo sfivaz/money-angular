@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Transaction} from "../transaction";
 import {TransactionService} from "../../services/transaction.service";
 import {Category} from "../../category/category";
@@ -56,9 +56,9 @@ export class TransactionFormComponent implements OnInit {
     this.transactionForm = this.formBuilder.group({
       id: [this.transaction.id || null],
       description: [this.transaction.description || ''],
-      value: [this.transaction.value || ''],
+      value: [this.transaction.value || '', Validators.required],
       isMonthly: [this.transaction.isMonthly || ''],
-      date: [dateString],
+      date: [dateString, Validators.required],
       type: [this.transaction.type || this.types[0]],
       categoryId: [this.transaction.categoryId || this.categories[0].id],
       sourceAccountId: [this.transaction.sourceAccountId || this.currentAccountId],

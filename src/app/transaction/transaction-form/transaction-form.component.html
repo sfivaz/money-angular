@@ -11,7 +11,7 @@
         <input formControlName="description" class="form-control" placeholder="description">
       </div>
     </div>
-    <div class="form-row ">
+    <div class="form-row form-group">
       <div class="col">
         <label>type</label>
         <select formControlName="type" class="form-control">
@@ -22,11 +22,11 @@
         <div class="d-flex justify-content-between">
           <label>value</label>
           <div class="d-flex align-items-center">
-            <label class="mr-1" for="monthly">monthly?</label>
+            <label class="mr-1" for="monthly">monthly</label>
             <input formControlName="isMonthly" id="monthly" type="checkbox">
           </div>
         </div>
-        <input formControlName="value" class="form-control">
+        <input formControlName="value" class="form-control" placeholder="value" autofocus>
         <small *ngIf="transactionForm.get('value').errors?.required" class="text-danger d-block mt-2">
           transaction value is required!
         </small>
