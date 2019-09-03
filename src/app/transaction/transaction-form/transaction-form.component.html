@@ -26,7 +26,7 @@
             <input formControlName="isMonthly" id="monthly" type="checkbox">
           </div>
         </div>
-        <input formControlName="value" class="form-control" placeholder="value" autofocus>
+        <input formControlName="value" type="number" class="form-control" placeholder="value" autofocus>
         <small *ngIf="transactionForm.get('value').errors?.required" class="text-danger d-block mt-2">
           transaction value is required!
         </small>

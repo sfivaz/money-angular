@@ -72,18 +72,20 @@ export class TransactionFormComponent implements OnInit {
   }
 
   updateTransaction() {
+    const categoryId = this.transactionForm.get('categoryId').value;
     this.transaction.id = this.transactionForm.get('id').value || null;
-    this.transaction.description = this.transactionForm.get('description').value;
+    this.transaction.description = this.transactionForm.get('description').value || this.getCategoryName(categoryId);
     this.transaction.value = this.transactionForm.get('value').value || 0;
     const dateString = this.transactionForm.get('date').value;
     this.transaction.date = new Date(dateString);
     this.transaction.type = this.transactionForm.get('type').value;
     this.transaction.isMonthly = this.transactionForm.get('isMonthly').value || false;
-    this.transaction.categoryId = this.transactionForm.get('categoryId').value;
+    this.transaction.categoryId = categoryId;
     this.transaction.sourceAccountId = this.transactionForm.get('sourceAccountId').value;
     this.transaction.destinationAccountId = this.transactionForm.get('destinationAccountId').value;
   }
 
+  // noinspection JSUnusedGlobalSymbols
   submit() {
     this.updateTransaction();
     if (this.transaction.id)
@@ -108,7 +110,12 @@ export class TransactionFormComponent implements OnInit {
       });
   }
 
+  // noinspection JSUnusedGlobalSymbols
   getTitle(): string {
     return `${this.transaction.id ? 'edit' : 'create'} transaction`;
+  }
+
+  getCategoryName(categoryId): string {
+    return this.categories.find(category => category.id == categoryId).name;
   }
 }
