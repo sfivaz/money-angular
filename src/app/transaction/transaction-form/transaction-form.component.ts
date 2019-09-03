@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Transaction} from "../transaction";
 import {TransactionService} from "../../services/transaction.service";
@@ -15,6 +15,7 @@ import {TransactionBuilderService} from "../../builders/transaction-builder.serv
 })
 export class TransactionFormComponent implements OnInit {
 
+  @Input() currentAccountId: number;
   visible: boolean = false;
   transactionForm: FormGroup;
   @Output() onCreate = new EventEmitter();
@@ -58,9 +59,9 @@ export class TransactionFormComponent implements OnInit {
       value: [this.transaction.value || ''],
       isMonthly: [this.transaction.isMonthly || ''],
       date: [dateString],
-      type: [this.transaction.type],
-      categoryId: [this.transaction.categoryId || null],
-      sourceAccountId: [this.transaction.sourceAccountId || null],
+      type: [this.transaction.type || this.types[0]],
+      categoryId: [this.transaction.categoryId || this.categories[0].id],
+      sourceAccountId: [this.transaction.sourceAccountId || this.currentAccountId],
       destinationAccountId: [this.transaction.destinationAccountId || null]
     });
   }

@@ -45,7 +45,10 @@
   </m-transaction-row>
 </main>
 
-<m-transaction-form (onCreate)="addTransactions($event)" (onEdit)="updateTransactions($event)"></m-transaction-form>
+<m-transaction-form [currentAccountId]="account.id"
+                    (onCreate)="addTransactions($event)"
+                    (onEdit)="updateTransactions($event)">
+</m-transaction-form>
 
 <m-confirm-delete element="transaction" (onConfirm)="removeTransaction($event)"></m-confirm-delete>
 
