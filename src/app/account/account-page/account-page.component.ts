@@ -53,6 +53,16 @@ export class AccountPageComponent implements OnInit {
     this.account.transactions = this.account.transactions.concat(transaction);
   }
 
+  updateTransactions(transactions: Transaction[]) {
+    const index = this.account.transactions
+      .findIndex(transaction => transaction.id == transactions[0].id);
+    this.account.transactions[index] = transactions[0];
+    transactions.shift();
+    this.account.transactions = this.account.transactions.concat(transactions);
+
+    console.log(transactions);
+  }
+
   removeTransaction(transactionId: number) {
     this.transactionService.delete(transactionId).subscribe(() =>
       this.account.removeTransactionById(transactionId));
