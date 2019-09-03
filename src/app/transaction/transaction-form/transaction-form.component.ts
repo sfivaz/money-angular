@@ -64,6 +64,18 @@ export class TransactionFormComponent implements OnInit {
       sourceAccountId: [this.transaction.sourceAccountId || this.currentAccountId],
       destinationAccountId: [this.transaction.destinationAccountId || null]
     });
+
+    this.toggleDestination(this.transactionForm.get('type').value);
+
+    this.transactionForm.get('type').valueChanges
+      .subscribe(value => this.toggleDestination(value));
+  }
+
+  private toggleDestination(type: string) {
+    if (type === 'transfer')
+      this.transactionForm.controls['destinationAccountId'].enable();
+    else
+      this.transactionForm.controls['destinationAccountId'].disable();
   }
 
   close() {
