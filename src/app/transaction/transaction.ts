@@ -19,8 +19,8 @@ export class Transaction extends Filterable {
     this._type = type;
     this._value = value;
     this._category = category;
-    this._isMonthly = isMonthly || false;
-    this._date = new Date(date);
+    this.isMonthly = isMonthly;
+    this.date = date;
     this._sourceAccountId = sourceAccountId;
     this._destinationAccountId = destinationAccountId;
   }
@@ -79,7 +79,10 @@ export class Transaction extends Filterable {
   }
 
   set date(value) {
-    this._date = new Date(value);
+    let date = new Date();
+    if (value)
+      date = new Date(value);
+    this._date = date;
   }
 
   get sourceAccountId(): number {
@@ -103,7 +106,7 @@ export class Transaction extends Filterable {
   }
 
   set isMonthly(value: boolean) {
-    this._isMonthly = value;
+    this._isMonthly = !!value;
   }
 
   toJSON() {
