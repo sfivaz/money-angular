@@ -29,7 +29,7 @@ export class CategoryService {
   }
 
   create(category: Category) {
-    console.log(JSON.stringify(category));
+    // console.log(JSON.stringify(category));
     return this.http.post<Category>(API_URL, category, {headers: this.headers});
   }
 

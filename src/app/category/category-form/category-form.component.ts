@@ -55,7 +55,7 @@ export class CategoryFormComponent implements OnInit {
   create() {
     this.categoryService.create(this.category)
       .subscribe(category => {
-        console.log(category);
+        // console.log(category);
         this.onCreate.emit(category);
         this.close();
       });

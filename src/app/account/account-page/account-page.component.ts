@@ -23,7 +23,7 @@ export class AccountPageComponent implements OnInit {
   @ViewChild(TransactionFormComponent, {static: false}) form: TransactionFormComponent;
   @ViewChild(ConfirmDeleteComponent, {static: false}) confirm: ConfirmDeleteComponent;
 
-  constructor(private service: TransactionService,
+  constructor(private transactionService: TransactionService,
               private accountService: AccountService,
               private categoryService: CategoryService,
               private activatedRoute: ActivatedRoute,
@@ -49,12 +49,12 @@ export class AccountPageComponent implements OnInit {
     this.confirm.open(id);
   }
 
-  addTransaction(transaction: Transaction) {
-    this.account.transactions.push(transaction);
+  addTransactions(transaction: Transaction[]) {
+    this.account.transactions = this.account.transactions.concat(transaction);
   }
 
   removeTransaction(transactionId: number) {
-    this.service.delete(transactionId).subscribe(() =>
+    this.transactionService.delete(transactionId).subscribe(() =>
       this.account.removeTransactionById(transactionId));
   }
 
