@@ -12,7 +12,6 @@ export class TransactionRowComponent implements OnInit {
   @Input() transaction: Transaction;
   @Output() onDelete = new EventEmitter();
   @Output() onEdit = new EventEmitter();
-  test: string = 'bg-danger';
 
   constructor() {
   }

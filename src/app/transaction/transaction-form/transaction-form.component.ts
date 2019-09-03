@@ -81,7 +81,6 @@ export class TransactionFormComponent implements OnInit {
     this.transaction.categoryId = this.transactionForm.get('categoryId').value;
     this.transaction.sourceAccountId = this.transactionForm.get('sourceAccountId').value;
     this.transaction.destinationAccountId = this.transactionForm.get('destinationAccountId').value;
-    console.log(this.transaction);
   }
 
   submit() {
@@ -94,16 +93,16 @@ export class TransactionFormComponent implements OnInit {
 
   create() {
     this.service.create(this.transaction)
-      .subscribe(transaction => {
-        this.onCreate.emit(transaction);
+      .subscribe(transactions => {
+        this.onCreate.emit(transactions);
         this.close();
       });
   }
 
   edit() {
     this.service.edit(this.transaction)
-      .subscribe(transaction => {
-        this.onEdit.emit(transaction);
+      .subscribe(transactions => {
+        this.onEdit.emit(transactions);
         this.close();
       });
   }

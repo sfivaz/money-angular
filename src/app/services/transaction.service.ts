@@ -17,7 +17,7 @@ export class TransactionService {
 
   constructor(private http: HttpClient,
               private tokenService: TokenService,
-              private trasnsactionBuilder: TransactionBuilderService) {
+              private transactionBuilder: TransactionBuilderService) {
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + this.tokenService.getToken()
@@ -26,12 +26,12 @@ export class TransactionService {
 
   create(transaction: Transaction) {
     return this.http.post<Transaction>(API_URL, transaction, {headers: this.headers})
-      .pipe(map(transactionObj => this.trasnsactionBuilder.build(transactionObj)));
+      .pipe(map(transactionsObj => this.transactionBuilder.buildMany(transactionsObj)));
   }
 
   edit(transaction: Transaction) {
     return this.http.put<Transaction>(API_URL + '/' + transaction.id, transaction, {headers: this.headers})
-      .pipe(map(transactionObj => this.trasnsactionBuilder.build(transactionObj)));
+      .pipe(map(transactionsObj => this.transactionBuilder.buildMany(transactionsObj)));
   }
 
   delete(id: number) {
