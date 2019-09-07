@@ -27,6 +27,6 @@ export class TransactionBuilderService {
       null,
       null,
       null,
-      null);
+      null,);
   }
 }

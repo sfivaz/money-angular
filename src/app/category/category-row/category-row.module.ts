@@ -5,8 +5,9 @@ import {CategoryRowComponent} from './category-row.component';
 @NgModule({
   declarations: [CategoryRowComponent],
   imports: [
-    CommonModule
-  ], exports: [CategoryRowComponent]
+    CommonModule,
+  ],
+  exports: [CategoryRowComponent]
 })
 export class CategoryRowModule {
 }

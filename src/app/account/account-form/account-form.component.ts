@@ -75,7 +75,7 @@ export class AccountFormComponent implements OnInit {
     this.accountForm = this.formBuilder.group({
       id: [this.account.id || ''],
       name: [this.account.name || '', Validators.required],
-      actualBalance: [this.account.actualBalance || '']
+      actualBalance: [this.account.actualBalance || ''],
     });
   }
 

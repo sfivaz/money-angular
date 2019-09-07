@@ -5,7 +5,7 @@ import {AccountRowComponent} from "./account-row.component";
 @NgModule({
   declarations: [AccountRowComponent],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [AccountRowComponent]
 })
