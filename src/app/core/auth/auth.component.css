@@ -48,13 +48,13 @@
   background-color: #fff;
 }
 
-.login-form-2 .forget-pwd {
+.login-form-2 .error-msg {
   color: #fff;
   font-weight: 600;
   text-decoration: none;
 }
 
-.login-form-1 .forget-pwd {
+.login-form-1 .error-msg {
   color: #0062cc;
   font-weight: 600;
   text-decoration: none;
