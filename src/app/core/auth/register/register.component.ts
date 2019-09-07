@@ -8,7 +8,7 @@ import {User} from "../../user";
 @Component({
   selector: 'm-register',
   templateUrl: './register.component.html',
-  styleUrls: ['../auth-form.component.css']
+  styleUrls: ['../auth.component.css']
 })
 export class RegisterComponent implements OnInit {
 
@@ -39,12 +39,12 @@ export class RegisterComponent implements OnInit {
       password: this.registerForm.get('password').value,
     };
 
-    // this.authService.register(user)
-    //   .subscribe(response => {
-    //     if (response.status && response.status == 409) {
-    //       this.failed = true;
-    //     } else
-    //       this.route.navigateByUrl('/');
-    //   });
+    this.authService.register(user)
+      .subscribe(response => {
+        if (response.status && response.status == 409) {
+          this.failed = true;
+        } else
+          this.route.navigateByUrl('/');
+      });
   }
 }
