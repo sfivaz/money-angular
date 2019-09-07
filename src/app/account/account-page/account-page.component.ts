@@ -101,4 +101,9 @@ export class AccountPageComponent implements OnInit {
   cleanFilters() {
     this.account.cleanFilter();
   }
+
+  getTransactions() {
+    const compare = (t1, t2) => t2.date.getTime() - t1.date.getTime();
+    return this.account.filteredTransactions.sort(compare);
+  }
 }
