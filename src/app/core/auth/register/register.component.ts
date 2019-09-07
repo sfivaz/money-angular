@@ -41,9 +41,9 @@ export class RegisterComponent implements OnInit {
 
     this.authService.register(user)
       .subscribe(response => {
-        if (response.status && response.status == 409) {
+        if (response.status && response.status == 409)
           this.failed = true;
-        } else
+        else
           this.route.navigateByUrl('/');
       });
   }

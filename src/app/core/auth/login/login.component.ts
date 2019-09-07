@@ -30,13 +30,13 @@ export class LoginComponent implements OnInit {
     const email = this.loginForm.get('email').value;
     const password = this.loginForm.get('password').value;
 
-    this.authService.login(email, password).subscribe(response => {
-      if (response.status && response.status == 401) {
-        this.failed = true;
-        this.loginForm.reset();
-      } else
-        this.route.navigateByUrl('/');
-    });
+    this.authService.login(email, password)
+      .subscribe(response => {
+        if (response.status && response.status == 401)
+          this.failed = true;
+        else
+          this.route.navigateByUrl('/');
+      });
   }
 
   goToRegisterPage() {
