@@ -13,16 +13,13 @@ export class CategoryFormComponent implements OnInit {
   categoryForm: FormGroup;
   @Output() onCreate = new EventEmitter();
   @Output() onEdit = new EventEmitter();
-  category: Category = {
-    id: null,
-    name: '',
-    budget: null
-  };
+  category: Category;
 
   constructor(private formBuilder: FormBuilder, private categoryService: CategoryService) {
   }
 
   ngOnInit() {
+    this.category = this.getEmptyCategory();
   }
 
   open(category?: Category) {
@@ -35,7 +32,7 @@ export class CategoryFormComponent implements OnInit {
 
   close() {
     this.visible = false;
-    this.category = null;
+    this.category = this.getEmptyCategory();
   }
 
   updateCategory() {
@@ -78,5 +75,9 @@ export class CategoryFormComponent implements OnInit {
 
   getTitle(): string {
     return `${this.category.id ? 'edit' : 'create'} category`;
+  }
+
+  getEmptyCategory(){
+    return {id: null, name: null, budget: null};
   }
 }
