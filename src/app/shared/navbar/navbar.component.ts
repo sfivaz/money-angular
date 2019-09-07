@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {TokenService} from "../../services/token.service";
 import * as jwtDecode from "jwt-decode";
+import {User} from "../../core/user";
 
 @Component({
   selector: 'm-navbar',
@@ -17,8 +18,9 @@ export class NavbarComponent implements OnInit {
 
   getFullName() {
     const token = this.tokenService.getToken();
-    const authData = jwtDecode(token);
-    return authData.user.firstName + ' ' + authData.user.lastName;
+    const user = <User>jwtDecode(token).user;
+    console.log(user);
+    return user.firstName + ' ' + user.lastName;
   }
 
   goToHomePage() {
