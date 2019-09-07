@@ -19,8 +19,7 @@ export class NavbarComponent implements OnInit {
   getFullName() {
     const token = this.tokenService.getToken();
     const user = <User>jwtDecode(token).user;
-    console.log(user);
-    return user.firstName + ' ' + user.lastName;
+    return `${user.firstName} ${user.lastName}`;
   }
 
   goToHomePage() {
