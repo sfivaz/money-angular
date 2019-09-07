@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
         this.failed = true;
         this.loginForm.reset();
       } else
-        this.route.navigateByUrl('/home');
+        this.route.navigateByUrl('/');
     });
   }
 }

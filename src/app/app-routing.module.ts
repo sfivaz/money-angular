@@ -9,12 +9,12 @@ import {GuestGuard} from "./core/guest/guest.guard";
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'login',
     component: LoginComponent,
     canActivate: [GuestGuard]
   },
   {
-    path: 'home',
+    path: '',
     component: AccountsPageComponent,
     canActivate: [AuthGuard]
   },

@@ -21,16 +21,16 @@ export class NavbarComponent implements OnInit {
     return authData.user.firstName + ' ' + authData.user.lastName;
   }
 
-  goToAccountsPage() {
-    this.router.navigateByUrl('home');
+  goToHomePage() {
+    this.router.navigateByUrl('/');
   }
 
   goToCategoriesPage() {
-    this.router.navigateByUrl('categories');
+    this.router.navigateByUrl('/categories');
   }
 
   logout() {
     this.tokenService.removeToken();
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('/login');
   }
 }
