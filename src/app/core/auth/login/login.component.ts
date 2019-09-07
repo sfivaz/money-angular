@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../services/auth.service";
-import {TokenService} from "../../services/token.service";
+import {AuthService} from "../../../services/auth.service";
+import {TokenService} from "../../../services/token.service";
 import {Router} from "@angular/router";
 
 @Component({
   templateUrl: './login.component.html',
-  styleUrls: ['../login.component.css']
+  styleUrls: ['../auth-form.component.css']
 })
 export class LoginComponent implements OnInit {
 

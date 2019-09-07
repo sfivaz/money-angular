@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../services/auth.service";
-import {TokenService} from "../../services/token.service";
+import {AuthService} from "../../../services/auth.service";
+import {TokenService} from "../../../services/token.service";
 import {Router} from "@angular/router";
-import {User} from "../../core/user";
+import {User} from "../../user";
 
 @Component({
   selector: 'm-register',
   templateUrl: './register.component.html',
-  styleUrls: ['../login.component.css']
+  styleUrls: ['../auth-form.component.css']
 })
 export class RegisterComponent implements OnInit {
 
