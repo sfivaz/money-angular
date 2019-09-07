@@ -27,6 +27,6 @@ export class AccountRowComponent implements OnInit {
   }
 
   enter() {
-    this.router.navigateByUrl('account/' + this.account.id);
+    this.router.navigate(['account', this.account.id]);
   }
 }

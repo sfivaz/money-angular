@@ -19,7 +19,7 @@
           <button [disabled]="loginForm.invalid" type="submit" class="btn-submit">Login</button>
         </div>
         <div class="form-group">
-          <a href="/register" class="forget-pwd">Don't have an account? Register </a>
+          <a class="link" (click)="goToRegisterPage()">Don't have an account? Register </a>
         </div>
         <div *ngIf="failed" class="p-3 bg-danger text-white">
           Your username or/and your password was/were incorrect.
