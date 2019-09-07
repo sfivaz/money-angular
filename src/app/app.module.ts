@@ -8,6 +8,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AccountPageModule} from "./account/account-page/account-page.module";
 import {CategoriesPageModule} from "./categories/categories-page/categories-page.module";
 import {LoginModule} from "./home/login/login.module";
+import {RegisterModule} from "./home/register/register.module";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {LoginModule} from "./home/login/login.module";
     AccountPageModule,
     CategoriesPageModule,
     HttpClientModule,
-    LoginModule
+    LoginModule,
+    RegisterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

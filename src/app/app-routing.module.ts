@@ -6,13 +6,9 @@ import {CategoriesPageComponent} from "./categories/categories-page/categories-p
 import {LoginComponent} from "./home/login/login.component";
 import {AuthGuard} from "./core/auth/auth.guard";
 import {GuestGuard} from "./core/guest/guest.guard";
+import {RegisterComponent} from "./home/register/register.component";
 
 const routes: Routes = [
-  {
-    path: 'login',
-    component: LoginComponent,
-    canActivate: [GuestGuard]
-  },
   {
     path: '',
     component: AccountsPageComponent,
@@ -27,7 +23,17 @@ const routes: Routes = [
     path: 'categories',
     component: CategoriesPageComponent,
     canActivate: [AuthGuard]
-  }
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [GuestGuard]
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [GuestGuard]
+  },
 ];
 
 @NgModule({
