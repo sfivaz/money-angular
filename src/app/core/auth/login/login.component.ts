@@ -38,4 +38,8 @@ export class LoginComponent implements OnInit {
         this.route.navigateByUrl('/');
     });
   }
+
+  goToRegisterPage() {
+    this.route.navigateByUrl('/register');
+  }
 }
