@@ -4,9 +4,9 @@ import {Transaction} from "../transaction/transaction";
 import {TokenService} from "./token.service";
 import {map} from "rxjs/operators";
 import {TransactionBuilderService} from "../builders/transaction-builder.service";
-import {API} from "../helpers/API";
+import {environment} from '../../environments/environment';
 
-const API_URL = API + '/transactions';
+const API_URL = environment.apiUrl + '/transactions';
 
 @Injectable({
   providedIn: 'root'

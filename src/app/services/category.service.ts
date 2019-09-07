@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {TokenService} from "./token.service";
-import {API} from "../helpers/API";
 import {Category} from "../category/category";
+import {environment} from '../../environments/environment';
 
-const API_URL = API + '/categories';
+const API_URL = environment.apiUrl + '/categories';
 
 @Injectable({
   providedIn: 'root'

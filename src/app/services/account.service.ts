@@ -4,9 +4,9 @@ import {Account} from "../account/account";
 import {TokenService} from "./token.service";
 import {map} from "rxjs/operators";
 import {AccountBuilderService} from "../builders/account-builder.service";
-import {API} from "../helpers/API";
+import {environment} from '../../environments/environment';
 
-const API_URL = API + '/accounts';
+const API_URL = environment.apiUrl + '/accounts';
 
 @Injectable({
   providedIn: 'root'
