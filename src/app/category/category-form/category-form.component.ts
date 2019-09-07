@@ -72,7 +72,7 @@ export class CategoryFormComponent implements OnInit {
     this.categoryForm = this.formBuilder.group({
       id: [this.category.id || ''],
       name: [this.category.name || '', Validators.required],
-      budget: [this.category.budget || '']
+      budget: [this.category.budget || ''],
     });
   }
 

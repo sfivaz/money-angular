@@ -62,7 +62,7 @@ export class TransactionFormComponent implements OnInit {
       type: [this.transaction.type || this.types[0]],
       categoryId: [this.transaction.categoryId || this.categories[0].id],
       sourceAccountId: [this.transaction.sourceAccountId || this.currentAccountId],
-      destinationAccountId: [this.transaction.destinationAccountId || null]
+      destinationAccountId: [this.transaction.destinationAccountId || null],
     });
 
     this.toggleDestination(this.transactionForm.get('type').value);

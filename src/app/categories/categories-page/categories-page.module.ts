@@ -13,7 +13,7 @@ import {ConfirmDeleteModule} from "../../shared/confirm-delete/confirm-delete.mo
     NavbarModule,
     CategoryRowModule,
     CategoryFormModule,
-    ConfirmDeleteModule
+    ConfirmDeleteModule,
   ]
 })
 export class CategoriesPageModule {
