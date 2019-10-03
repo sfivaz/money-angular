@@ -6,7 +6,7 @@
     "dev": "ng serve",
     "server": "cd ../ && cd money-api2 && npm start",
     "start": "node server.js",
-    "postinstall": "ng build --aot -prod",
+    "heroku-postbuild": "ng build --prod",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
