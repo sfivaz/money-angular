@@ -1,27 +1,15 @@
-# MoneyAngular
+# Money
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
+## About
+This is an app for managing your finances, you can control many accounts and transfer money between them, so it can be used for managing the finances of a household or for a big institution.
 
-## Development server
+## Technologies used
+This app was totally built in Angular, without the help of Angular Material, all components were designed by me, with the help of Bootstrap and Fontawesome.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The application is a SPA which communicates with the [Waser Money API](https://github.com/fivaz/money-api), using JWT authentication.
 
-## Code scaffolding
+## Utilisation
+you can use this application right now on https://waser-money-angular.herokuapp.com/
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
